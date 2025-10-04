@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Music
+Comment=Music
+Exec=omarchy-launch-webapp https://music.youtube.com
+Terminal=false
+Type=Application
+Icon=/home/yannick/.local/share/applications/icons/Music.png
+StartupNotify=true

@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Notion
+Comment=Notion
+Exec=omarchy-launch-webapp https://www.notion.so/Yomi-27e3336a140280c39480ef799f9bafb2
+Terminal=false
+Type=Application
+Icon=/home/yannick/.local/share/applications/icons/Notion.png
+StartupNotify=true

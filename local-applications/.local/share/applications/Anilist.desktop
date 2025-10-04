@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Anilist
+Comment=Anilist
+Exec=omarchy-launch-webapp https://anilist.co/home
+Terminal=false
+Type=Application
+Icon=/home/yannick/.local/share/applications/icons/Anilist.png
+StartupNotify=true

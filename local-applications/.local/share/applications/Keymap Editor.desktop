@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Keymap Editor
+Comment=Keymap Editor
+Exec=omarchy-launch-webapp https://nickcoutsos.github.io/keymap-editor/
+Terminal=false
+Type=Application
+Icon=/home/yannick/.local/share/applications/icons/Keymap Editor.png
+StartupNotify=true

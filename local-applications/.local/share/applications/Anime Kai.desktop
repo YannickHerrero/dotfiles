@@ -1,0 +1,9 @@
+[Desktop Entry]
+Version=1.0
+Name=Anime Kai
+Comment=Anime Kai
+Exec=omarchy-launch-webapp https://animekai.ac/home
+Terminal=false
+Type=Application
+Icon=/home/yannick/.local/share/applications/icons/Anime Kai.png
+StartupNotify=true
