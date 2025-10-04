@@ -1,0 +1,29 @@
+# Editor swap and backup files
+*.swp
+*.swo
+*~
+*.bak
+
+# OS metadata
+.DS_Store
+Thumbs.db
+
+# Windows Zone Identifier files
+*:Zone.Identifier
+
+# Environment files
+.env
+.env.local
+.env.*.local
+
+# Logs
+*.log
+
+# Cache directories
+__pycache__/
+*.pyc
+.cache/
+
+# Temporary files
+*.tmp
+.*.tmp
