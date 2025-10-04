@@ -125,6 +125,7 @@
     },
     "modules": [
       "custom/expand-icon",
+      "tray",
       "network",
       "cpu",
       "bluetooth",
