@@ -75,14 +75,5 @@ if ! shopt -oq posix; then
   fi
 fi
 
-# Completion styling
-bind 'set completion-ignore-case on'       # Case-insensitive completion
-bind 'set show-all-if-ambiguous on'        # Show completions immediately
-bind 'set colored-stats on'                # Color completion by file type
-bind 'set visible-stats on'                # Show file type indicators
-bind 'set mark-symlinked-directories on'   # Mark symlinked directories
-bind 'set colored-completion-prefix on'    # Color the prefix
-bind 'set menu-complete-display-prefix on' # Show prefix before cycling
-
 # Attach ble.sh at the end
 [[ ${BLE_VERSION-} ]] && ble-attach
