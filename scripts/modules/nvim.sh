@@ -1,44 +1,23 @@
 #!/bin/bash
-# Install latest neovim from GitHub releases
+# Install neovim via PPA (provides up-to-date versions)
 
 install_nvim() {
     echo "Installing neovim..."
     
-    # Get latest version
-    local latest_version
-    latest_version=$(curl -s https://api.github.com/repos/neovim/neovim/releases/latest | grep '"tag_name"' | sed -E 's/.*"([^"]+)".*/\1/')
-    
-    # Check if already installed with same version
-    if command -v nvim &> /dev/null; then
-        local current_version
-        current_version=$(nvim --version | head -1 | grep -oP 'v\d+\.\d+\.\d+')
-        if [[ "$current_version" == "$latest_version" ]]; then
-            echo "Neovim $latest_version already installed"
-            return 0
-        fi
+    # Add Neovim PPA if not already added
+    if ! grep -q "neovim-ppa" /etc/apt/sources.list.d/*.list 2>/dev/null; then
+        echo "Adding Neovim PPA..."
+        sudo add-apt-repository -y ppa:neovim-ppa/unstable
+        sudo apt update
+    else
+        echo "Neovim PPA already added"
     fi
     
-    echo "Installing Neovim $latest_version..."
+    # Install neovim
+    sudo apt install -y neovim
     
-    # Download and extract
-    local tmp_dir=$(mktemp -d)
-    cd "$tmp_dir"
-    
-    curl -LO "https://github.com/neovim/neovim/releases/download/${latest_version}/nvim-linux64.tar.gz"
-    tar xzf nvim-linux64.tar.gz
-    
-    # Install to /usr/local
-    sudo rm -rf /usr/local/nvim
-    sudo mv nvim-linux64 /usr/local/nvim
-    
-    # Create symlink
-    sudo ln -sf /usr/local/nvim/bin/nvim /usr/local/bin/nvim
-    
-    # Cleanup
-    cd -
-    rm -rf "$tmp_dir"
-    
-    echo "Neovim $latest_version installed!"
+    # Show installed version
+    echo "Neovim $(nvim --version | head -1) installed!"
 }
 
 install_nvim
