@@ -1,26 +1,35 @@
-local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 return {
-  "nvimtools/none-ls.nvim",
-  config = function()
-    local null_ls = require("null-ls")
-    null_ls.setup({
-      sources = {
-        null_ls.builtins.formatting.stylua,
-        null_ls.builtins.formatting.prettier,
-      },
-      on_attach = function(client, bufnr)
-        if client.supports_method("textDocument/formatting") then
-          vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
-          vim.api.nvim_create_autocmd("BufWritePre", {
-            group = augroup,
-            buffer = bufnr,
-            callback = function()
-              vim.lsp.buf.format()
-            end,
-          })
-        end
+  "stevearc/conform.nvim",
+  event = { "BufWritePre" },
+  cmd = { "ConformInfo" },
+  keys = {
+    {
+      "<leader>gf",
+      function()
+        require("conform").format({ async = true, lsp_fallback = true })
       end,
-    })
-    vim.keymap.set("n", "<leader>gf", vim.lsp.buf.format, {})
-  end,
+      mode = "",
+      desc = "Format buffer",
+    },
+  },
+  opts = {
+    formatters_by_ft = {
+      lua = { "stylua" },
+      javascript = { "prettier" },
+      javascriptreact = { "prettier" },
+      typescript = { "prettier" },
+      typescriptreact = { "prettier" },
+      json = { "prettier" },
+      jsonc = { "prettier" },
+      html = { "prettier" },
+      css = { "prettier" },
+      scss = { "prettier" },
+      markdown = { "prettier" },
+      yaml = { "prettier" },
+    },
+    format_on_save = {
+      timeout_ms = 500,
+      lsp_fallback = true,
+    },
+  },
 }
