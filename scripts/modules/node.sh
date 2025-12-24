@@ -19,6 +19,14 @@ install_node() {
     echo "Installing Node.js LTS..."
     mise use --global node@lts
     
+    # Install bun
+    echo "Installing bun..."
+    mise use --global bun@latest
+    
+    # Install pnpm
+    echo "Installing pnpm..."
+    mise use --global pnpm@latest
+    
     # Install global packages
     if ! command -v eas &> /dev/null; then
         echo "Installing eas-cli..."
