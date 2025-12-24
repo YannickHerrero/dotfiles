@@ -1,18 +1,16 @@
 #!/bin/bash
-# Install mise, Node.js LTS, and global npm packages
+# Install Node.js LTS, bun, pnpm, and global npm packages via mise
 
 install_node() {
-    echo "Installing mise and Node.js..."
+    echo "Installing Node.js and package managers..."
     
-    # Install mise if not present
+    # Check if mise is installed
     if ! command -v mise &> /dev/null; then
-        echo "Installing mise..."
-        curl https://mise.run | sh
-    else
-        echo "mise already installed"
+        echo "Error: mise is not installed. Please run mise.sh first."
+        exit 1
     fi
     
-    # Add mise to PATH for this session
+    # Ensure mise is in PATH
     export PATH="$HOME/.local/bin:$PATH"
     
     # Install Node.js LTS
@@ -43,7 +41,7 @@ install_node() {
         echo "opencode already installed"
     fi
     
-    echo "Node.js and packages installed!"
+    echo "Node.js, bun, pnpm, and packages installed!"
 }
 
 install_node

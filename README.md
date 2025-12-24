@@ -19,7 +19,8 @@ Install specific components:
 ./install.sh zsh        # Zsh + oh-my-posh
 ./install.sh tmux       # Tmux
 ./install.sh nvim       # Neovim (latest)
-./install.sh node       # fnm + Node.js LTS + npm packages
+./install.sh mise       # mise runtime manager
+./install.sh node       # Node.js LTS + bun + pnpm + npm packages
 ./install.sh tools      # zoxide, delta, lazygit
 ./install.sh git        # Git configuration
 ./install.sh dotfiles   # Copy all config files
@@ -52,13 +53,14 @@ Themes update:
 - **oh-my-posh** for prompt theming
 - **tmux** with Ctrl+A prefix + TPM (session persistence)
 - **neovim** (latest from GitHub releases)
-- **fnm** (Fast Node Manager) + Node.js LTS
+- **mise** (polyglot runtime manager)
+- **Node.js LTS** + **bun** + **pnpm** (via mise)
 - **opencode** (AI coding assistant)
 - **eas-cli** (Expo Application Services)
-- **zoxide** (smart cd)
+- **zoxide** (smart cd, via mise)
 - **fzf** (fuzzy finder)
-- **delta** (git diff viewer)
-- **lazygit** (git TUI)
+- **delta** (git diff viewer, via mise)
+- **lazygit** (git TUI, via mise)
 - **eza** (modern ls)
 - **bat** (cat with syntax highlighting)
 - **ripgrep** (fast grep)

@@ -43,14 +43,15 @@ declare -A MODULES=(
     ["zsh"]="Zsh shell and oh-my-posh"
     ["tmux"]="Tmux terminal multiplexer"
     ["nvim"]="Neovim (latest from GitHub)"
-    ["node"]="NVM, Node.js LTS, npm packages"
+    ["mise"]="mise runtime manager"
+    ["node"]="Node.js LTS, bun, pnpm, npm packages"
     ["tools"]="Additional tools (zoxide, delta, lazygit)"
     ["git"]="Git configuration"
     ["dotfiles"]="Copy all dotfiles to home directory"
 )
 
 # Order for full install
-INSTALL_ORDER=(apt zsh tmux nvim node tools git dotfiles)
+INSTALL_ORDER=(apt zsh tmux nvim mise node tools git dotfiles)
 
 show_help() {
     echo "Dotfiles Bootstrap Script"
