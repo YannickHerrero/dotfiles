@@ -49,22 +49,49 @@ Themes update:
 ## What's Included
 
 ### Tools Installed
-- **zsh** with zinit plugin manager
-- **oh-my-posh** for prompt theming
-- **tmux** with Ctrl+A prefix + TPM (session persistence)
-- **neovim** (latest from GitHub releases)
-- **mise** (polyglot runtime manager)
-- **Node.js LTS** + **bun** + **pnpm** (via mise)
-- **opencode** (AI coding assistant)
-- **eas-cli** (Expo Application Services)
-- **zoxide** (smart cd, via mise)
-- **fzf** (fuzzy finder)
-- **delta** (git diff viewer, via mise)
-- **lazygit** (git TUI, via mise)
-- **eza** (modern ls)
-- **bat** (cat with syntax highlighting)
-- **ripgrep** (fast grep)
-- **fd** (fast find)
+
+#### Shell & Terminal
+
+| Tool | Installation | Description |
+|------|--------------|-------------|
+| zsh | apt | Shell with zinit plugin manager |
+| oh-my-posh | curl | Prompt theming |
+| tmux | apt | Terminal multiplexer with TPM |
+
+#### Editor
+
+| Tool | Installation | Description |
+|------|--------------|-------------|
+| neovim | PPA | Text editor (unstable/latest) |
+
+#### Runtime Manager
+
+| Tool | Installation | Description |
+|------|--------------|-------------|
+| mise | curl | Polyglot runtime manager |
+
+#### JavaScript
+
+| Tool | Installation | Description |
+|------|--------------|-------------|
+| Node.js LTS | mise | JavaScript runtime |
+| bun | mise | JavaScript runtime/bundler |
+| pnpm | mise | Fast package manager |
+| eas-cli | npm | Expo Application Services |
+| opencode | curl | AI coding assistant |
+
+#### CLI Tools
+
+| Tool | Installation | Description |
+|------|--------------|-------------|
+| zoxide | mise | Smart cd |
+| delta | mise | Git diff viewer |
+| lazygit | mise | Git TUI |
+| fzf | apt | Fuzzy finder |
+| eza | apt | Modern ls |
+| bat | apt | Cat with syntax highlighting |
+| ripgrep | apt | Fast grep |
+| fd | apt | Fast find |
 
 ### Neovim Plugins
 - LSP support (lua, typescript, tailwindcss)
