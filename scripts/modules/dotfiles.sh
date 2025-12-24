@@ -1,8 +1,8 @@
 #!/bin/bash
 # Copy all dotfiles to their appropriate locations
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DOTFILES_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
+_MODULE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOTFILES_DIR="$(dirname "$(dirname "$_MODULE_DIR")")"
 
 copy_dotfiles() {
     echo "Copying dotfiles..."

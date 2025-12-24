@@ -1,8 +1,8 @@
 #!/bin/bash
 # Setup git configuration
 
-SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DOTFILES_DIR="$(dirname "$(dirname "$SCRIPT_DIR")")"
+_MODULE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+DOTFILES_DIR="$(dirname "$(dirname "$_MODULE_DIR")")"
 
 setup_git() {
     echo "Setting up git configuration..."
