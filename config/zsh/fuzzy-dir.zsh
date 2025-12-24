@@ -1,11 +1,44 @@
-# Fuzzy directory finder - cd into selected directory (top-level ~/dev folders only)
+# Tmux sessionizer - select a project and attach/create tmux session
 f() {
     local dir
     dir=$(find "$HOME/dev" -mindepth 1 -maxdepth 1 -type d -printf '%f\n' 2>/dev/null | \
     fzf --preview "eza --tree --level=1 --color=always $HOME/dev/{}" \
         --bind 'ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up')
-    if [ -n "$dir" ]; then
-        cd "$HOME/dev/$dir"
+    
+    if [ -z "$dir" ]; then
+        return
+    fi
+
+    local session_name="$dir"
+    local project_path="$HOME/dev/$dir"
+
+    # Check if session already exists
+    if tmux has-session -t "$session_name" 2>/dev/null; then
+        # Session exists - attach or switch to it
+        if [ -n "$TMUX" ]; then
+            tmux switch-client -t "$session_name"
+        else
+            tmux attach-session -t "$session_name"
+        fi
+    else
+        # Create new session with 4 windows
+        tmux new-session -d -s "$session_name" -c "$project_path" -n "nvim"
+        tmux new-window -t "$session_name" -c "$project_path" -n "opencode"
+        tmux new-window -t "$session_name" -c "$project_path" -n "run"
+        tmux new-window -t "$session_name" -c "$project_path" -n "zsh"
+        
+        # Split the 'run' window into 2 side-by-side panes
+        tmux split-window -h -t "$session_name:run"
+        
+        # Select the first window
+        tmux select-window -t "$session_name:nvim"
+        
+        # Attach or switch to the new session
+        if [ -n "$TMUX" ]; then
+            tmux switch-client -t "$session_name"
+        else
+            tmux attach-session -t "$session_name"
+        fi
     fi
 }
 
