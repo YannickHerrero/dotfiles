@@ -1,17 +1,25 @@
 #!/bin/bash
-# Install additional tools via mise: zoxide, delta, lazygit
+# Install additional CLI tools
 
 install_tools() {
     echo "Installing additional tools..."
     
     # Check if mise is installed
     if ! command -v mise &> /dev/null; then
-        echo "Error: mise is not installed. Please run node.sh first."
+        echo "Error: mise is not installed. Please run mise.sh first."
         exit 1
     fi
     
     # Ensure mise is in PATH
     export PATH="$HOME/.local/bin:$PATH"
+    
+    # Install opencode
+    if ! command -v opencode &> /dev/null; then
+        echo "Installing opencode..."
+        curl -fsSL https://opencode.ai/install | bash
+    else
+        echo "opencode already installed"
+    fi
     
     # Install zoxide
     echo "Installing zoxide..."

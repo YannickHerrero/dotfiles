@@ -78,12 +78,12 @@ Themes update:
 | bun | mise | JavaScript runtime/bundler |
 | pnpm | mise | Fast package manager |
 | eas-cli | npm | Expo Application Services |
-| opencode | curl | AI coding assistant |
 
 #### CLI Tools
 
 | Tool | Installation | Description |
 |------|--------------|-------------|
+| opencode | curl | AI coding assistant |
 | zoxide | mise | Smart cd |
 | delta | mise | Git diff viewer |
 | lazygit | mise | Git TUI |

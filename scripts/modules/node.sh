@@ -33,14 +33,6 @@ install_node() {
         echo "eas-cli already installed"
     fi
     
-    # Install opencode
-    if ! command -v opencode &> /dev/null; then
-        echo "Installing opencode..."
-        curl -fsSL https://opencode.ai/install | bash
-    else
-        echo "opencode already installed"
-    fi
-    
     echo "Node.js, bun, pnpm, and packages installed!"
 }
 
