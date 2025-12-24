@@ -1,30 +1,27 @@
 #!/bin/bash
-# Install fnm (Fast Node Manager), Node.js LTS, and global npm packages
+# Install mise, Node.js LTS, and global npm packages
 
 install_node() {
-    echo "Installing fnm and Node.js..."
+    echo "Installing mise and Node.js..."
     
-    # Install fnm if not present
-    if ! command -v fnm &> /dev/null; then
-        echo "Installing fnm..."
-        curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
+    # Install mise if not present
+    if ! command -v mise &> /dev/null; then
+        echo "Installing mise..."
+        curl https://mise.run | sh
     else
-        echo "fnm already installed"
+        echo "mise already installed"
     fi
     
-    # Load fnm for this session
-    export PATH="$HOME/.local/share/fnm:$PATH"
-    eval "$(fnm env)"
+    # Add mise to PATH for this session
+    export PATH="$HOME/.local/bin:$PATH"
     
-    # Install latest LTS
+    # Install Node.js LTS
     echo "Installing Node.js LTS..."
-    fnm install --lts
-    fnm default lts-latest
-    fnm use lts-latest
+    mise use --global node@lts
     
     # Install global packages
     echo "Installing global npm packages..."
-    npm install -g eas-cli
+    mise exec -- npm install -g eas-cli
     
     # Install opencode
     echo "Installing opencode..."
