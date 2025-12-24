@@ -15,39 +15,52 @@ return {
   },
   {
     "j-hui/fidget.nvim",
-    opts = {
-      -- options
-    },
+    opts = {},
   },
   {
     "neovim/nvim-lspconfig",
     config = function()
-      local lspconfig = require("lspconfig")
       local capabilities = require("cmp_nvim_lsp").default_capabilities()
-      lspconfig.lua_ls.setup({
+
+      -- Configure LSP servers using vim.lsp.config (Neovim 0.11+)
+      vim.lsp.config("lua_ls", {
         capabilities = capabilities,
       })
-      lspconfig.ts_ls.setup({
+      vim.lsp.config("ts_ls", {
         capabilities = capabilities,
       })
-      lspconfig.tailwindcss.setup({
+      vim.lsp.config("tailwindcss", {
         capabilities = capabilities,
       })
+
+      -- Enable configured servers
+      vim.lsp.enable({ "lua_ls", "ts_ls", "tailwindcss" })
+
       require("fidget").setup()
+
+      -- Completion options
       vim.o.completeopt = "menuone,noinsert,noselect"
       vim.opt.shortmess = vim.opt.shortmess + "c"
 
+      -- Diagnostics config
       vim.diagnostic.config({
         virtual_text = true,
         float = { border = "rounded" },
       })
 
+      -- Show diagnostics on hover
       vim.o.updatetime = 250
-      vim.cmd([[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]])
-      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+      vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+        callback = function()
+          vim.diagnostic.open_float(nil, { focus = false })
+        end,
+      })
 
-      vim.lsp.handlers["textDocument/signatureHelp"] =
-        vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+      -- Bordered hover and signature help
+      vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
+      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+
+      -- Keymaps
       vim.keymap.set("n", "K", vim.lsp.buf.hover, {})
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, {})
       vim.keymap.set("n", "gr", vim.lsp.buf.references, {})
