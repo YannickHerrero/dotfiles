@@ -1,5 +1,5 @@
 #!/bin/bash
-# Install tmux
+# Install tmux and TPM (Tmux Plugin Manager)
 
 install_tmux() {
     echo "Installing tmux..."
@@ -10,7 +10,16 @@ install_tmux() {
         echo "tmux already installed"
     fi
     
-    echo "Tmux installed!"
+    # Install TPM (Tmux Plugin Manager)
+    if [[ ! -d "$HOME/.tmux/plugins/tpm" ]]; then
+        echo "Installing TPM (Tmux Plugin Manager)..."
+        git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
+    else
+        echo "TPM already installed"
+    fi
+    
+    echo "Tmux and TPM installed!"
+    echo "Note: After starting tmux, press 'prefix + I' to install plugins"
 }
 
 install_tmux
