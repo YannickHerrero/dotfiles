@@ -1,9 +1,28 @@
 return {
-  -- Mason for installing LSP servers (run :Mason to install servers)
+  -- Mason for installing LSP servers
   {
     "williamboman/mason.nvim",
     config = function()
       require("mason").setup()
+    end,
+  },
+  -- Mason-lspconfig for automatic LSP server installation
+  {
+    "williamboman/mason-lspconfig.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    config = function()
+      require("mason-lspconfig").setup({
+        ensure_installed = {
+          "lua_ls", -- Lua
+          "ts_ls", -- TypeScript/JavaScript
+          "tailwindcss", -- Tailwind CSS
+          "cssls", -- CSS
+          "html", -- HTML
+          "jsonls", -- JSON
+          "eslint", -- ESLint
+        },
+        automatic_installation = true,
+      })
     end,
   },
   -- Fidget for LSP progress notifications
@@ -37,7 +56,7 @@ return {
         },
       })
 
-      -- TypeScript/JavaScript Language Server
+      -- TypeScript/JavaScript Language Server (React, React Native, Next.js)
       vim.lsp.config("ts_ls", {
         cmd = { "typescript-language-server", "--stdio" },
         filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
@@ -51,8 +70,36 @@ return {
         root_markers = { "tailwind.config.js", "tailwind.config.ts", "postcss.config.js", ".git" },
       })
 
+      -- CSS Language Server
+      vim.lsp.config("cssls", {
+        cmd = { "vscode-css-language-server", "--stdio" },
+        filetypes = { "css", "scss", "less" },
+        root_markers = { "package.json", ".git" },
+      })
+
+      -- HTML Language Server
+      vim.lsp.config("html", {
+        cmd = { "vscode-html-language-server", "--stdio" },
+        filetypes = { "html" },
+        root_markers = { "package.json", ".git" },
+      })
+
+      -- JSON Language Server
+      vim.lsp.config("jsonls", {
+        cmd = { "vscode-json-language-server", "--stdio" },
+        filetypes = { "json", "jsonc" },
+        root_markers = { ".git" },
+      })
+
+      -- ESLint Language Server
+      vim.lsp.config("eslint", {
+        cmd = { "vscode-eslint-language-server", "--stdio" },
+        filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
+        root_markers = { ".eslintrc", ".eslintrc.js", ".eslintrc.json", "eslint.config.js", "package.json" },
+      })
+
       -- Enable the configured servers
-      vim.lsp.enable({ "lua_ls", "ts_ls", "tailwindcss" })
+      vim.lsp.enable({ "lua_ls", "ts_ls", "tailwindcss", "cssls", "html", "jsonls", "eslint" })
 
       -- Setup fidget
       require("fidget").setup()
@@ -73,7 +120,8 @@ return {
 
       -- Bordered hover and signature help
       vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" })
-      vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
+      vim.lsp.handlers["textDocument/signatureHelp"] =
+        vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" })
 
       -- Additional keymaps (Neovim 0.11 already provides gra, grn, grr, gri, grt, gO, K)
       vim.keymap.set("n", "gd", vim.lsp.buf.definition, { desc = "Go to definition" })
