@@ -20,12 +20,20 @@ install_node() {
     mise use --global node@lts
     
     # Install global packages
-    echo "Installing global npm packages..."
-    mise exec -- npm install -g eas-cli
+    if ! command -v eas &> /dev/null; then
+        echo "Installing eas-cli..."
+        mise exec -- npm install -g eas-cli
+    else
+        echo "eas-cli already installed"
+    fi
     
     # Install opencode
-    echo "Installing opencode..."
-    curl -fsSL https://opencode.ai/install | bash
+    if ! command -v opencode &> /dev/null; then
+        echo "Installing opencode..."
+        curl -fsSL https://opencode.ai/install | bash
+    else
+        echo "opencode already installed"
+    fi
     
     echo "Node.js and packages installed!"
 }
