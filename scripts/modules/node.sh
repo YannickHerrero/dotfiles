@@ -1,27 +1,26 @@
 #!/bin/bash
-# Install nvm, Node.js LTS, and global npm packages
+# Install fnm (Fast Node Manager), Node.js LTS, and global npm packages
 
 install_node() {
-    echo "Installing nvm and Node.js..."
+    echo "Installing fnm and Node.js..."
     
-    export NVM_DIR="$HOME/.nvm"
-    
-    # Install nvm if not present
-    if [[ ! -d "$NVM_DIR" ]]; then
-        echo "Installing nvm..."
-        curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.1/install.sh | bash
+    # Install fnm if not present
+    if ! command -v fnm &> /dev/null; then
+        echo "Installing fnm..."
+        curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
     else
-        echo "nvm already installed"
+        echo "fnm already installed"
     fi
     
-    # Load nvm
-    [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+    # Load fnm for this session
+    export PATH="$HOME/.local/share/fnm:$PATH"
+    eval "$(fnm env)"
     
     # Install latest LTS
     echo "Installing Node.js LTS..."
-    nvm install --lts
-    nvm use --lts
-    nvm alias default 'lts/*'
+    fnm install --lts
+    fnm default lts-latest
+    fnm use lts-latest
     
     # Install global packages
     echo "Installing global npm packages..."

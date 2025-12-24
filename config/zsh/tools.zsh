@@ -3,6 +3,5 @@ oh-my-posh enable reload 2>/dev/null || true
 eval "$(oh-my-posh init zsh --config ~/.config/ohmyposh/zen.toml)"
 eval "$(zoxide init --cmd z zsh)"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"
+# Fast Node Manager (fnm) - much faster than nvm
+eval "$(fnm env --use-on-cd)"
