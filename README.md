@@ -19,7 +19,7 @@ Install specific components:
 ./install.sh zsh        # Zsh + oh-my-posh
 ./install.sh tmux       # Tmux
 ./install.sh nvim       # Neovim (latest)
-./install.sh node       # NVM + Node.js LTS + npm packages
+./install.sh node       # fnm + Node.js LTS + npm packages
 ./install.sh tools      # zoxide, delta, lazygit
 ./install.sh git        # Git configuration
 ./install.sh dotfiles   # Copy all config files
@@ -50,9 +50,9 @@ Themes update:
 ### Tools Installed
 - **zsh** with zinit plugin manager
 - **oh-my-posh** for prompt theming
-- **tmux** with Ctrl+A prefix
+- **tmux** with Ctrl+A prefix + TPM (session persistence)
 - **neovim** (latest from GitHub releases)
-- **nvm** + Node.js LTS
+- **fnm** (Fast Node Manager) + Node.js LTS
 - **opencode** (AI coding assistant)
 - **eas-cli** (Expo Application Services)
 - **zoxide** (smart cd)
@@ -99,8 +99,7 @@ Themes update:
 #### Zsh
 | Key | Action |
 |-----|--------|
-| `f` | Fuzzy find ~/dev directories |
-| `fd` | Deep fuzzy find directories |
+| `f` | Tmux sessionizer (select project, create/attach session) |
 | `ff` | Fuzzy find files, open in nvim |
 | `z <dir>` | Smart cd with zoxide |
 
