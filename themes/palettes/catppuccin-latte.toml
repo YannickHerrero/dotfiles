@@ -1,0 +1,56 @@
+[meta]
+name = "Catppuccin Latte"
+id = "latte"
+type = "light"
+
+[colors]
+# Core UI colors
+background = "eff1f5"
+foreground = "4c4f69"
+primary = "ea76cb"
+accent = "1e66f5"
+text = "4c4f69"
+muted = "9ca0b0"
+border = "ccd0da"
+
+[colors.base16]
+# Base16 palette (Neovim, syntax highlighting)
+base00 = "eff1f5"  # Default Background (base)
+base01 = "e6e9ef"  # Lighter Background (mantle)
+base02 = "ccd0da"  # Selection Background (surface0)
+base03 = "bcc0cc"  # Comments, Invisibles (surface1)
+base04 = "acb0be"  # Dark Foreground (surface2)
+base05 = "4c4f69"  # Default Foreground (text)
+base06 = "dc8a78"  # Light Foreground (rosewater)
+base07 = "7287fd"  # Lightest Foreground (lavender)
+base08 = "d20f39"  # Variables, Errors (red)
+base09 = "fe640b"  # Integers, Constants (peach)
+base0A = "df8e1d"  # Classes, Search BG (yellow)
+base0B = "40a02b"  # Strings (green)
+base0C = "179299"  # Support, Regex (teal)
+base0D = "1e66f5"  # Functions, Methods (blue)
+base0E = "8839ef"  # Keywords (mauve)
+base0F = "dd7878"  # Deprecated, Embedded (flamingo)
+
+[apps.ohmyposh]
+# Semantic colors for prompt
+path = "7287fd"
+prompt = "fe640b"
+prompt_error = "d20f39"
+git_branch = "6c6f85"
+git_status = "179299"
+duration = "df8e1d"
+
+[apps.tmux]
+# Tmux status bar colors
+status_bg = "eff1f5"
+status_fg = "4c4f69"
+border = "ccd0da"
+border_active = "7287fd"
+message_bg = "ccd0da"
+message_fg = "4c4f69"
+session_bg = "1e66f5"
+session_fg = "eff1f5"
+window_fg = "9ca0b0"
+window_active_fg = "fe640b"
+clock_fg = "4c4f69"
