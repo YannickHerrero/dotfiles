@@ -2,12 +2,17 @@ return {
   {
     "nvim-telescope/telescope.nvim",
     tag = "0.1.8",
-    dependencies = { "nvim-lua/plenary.nvim" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      {
+        "nvim-telescope/telescope-ui-select.nvim",
+      },
+    },
     config = function()
+      local telescope = require("telescope")
       local builtin = require("telescope.builtin")
-      vim.keymap.set("n", "<leader> ", builtin.find_files, { desc = "find file" })
-      vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "file grep" })
-      require("telescope").setup({
+
+      telescope.setup({
         pickers = {
           find_files = {
             find_command = {
@@ -22,20 +27,17 @@ return {
             },
           },
         },
-      })
-    end,
-  },
-  {
-    "nvim-telescope/telescope-ui-select.nvim",
-    config = function()
-      require("telescope").setup({
         extensions = {
           ["ui-select"] = {
             require("telescope.themes").get_dropdown({}),
           },
         },
       })
-      require("telescope").load_extension("ui-select")
+
+      telescope.load_extension("ui-select")
+
+      vim.keymap.set("n", "<leader> ", builtin.find_files, { desc = "find file" })
+      vim.keymap.set("n", "<leader>sg", builtin.live_grep, { desc = "file grep" })
     end,
   },
 }

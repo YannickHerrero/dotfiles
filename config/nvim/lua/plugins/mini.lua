@@ -1,8 +1,8 @@
 return {
-  { "echasnovski/mini.nvim", version = "*" },
   {
     "echasnovski/mini.ai",
     version = "*",
+    event = "VeryLazy",
     config = function()
       require("mini.ai").setup({})
     end,
@@ -10,7 +10,9 @@ return {
   {
     "echasnovski/mini.pairs",
     event = "VeryLazy",
-    opts = {},
+    config = function()
+      require("mini.pairs").setup({})
+    end,
     keys = {
       {
         "<leader>up",
@@ -26,5 +28,12 @@ return {
         desc = "Toggle auto pairs",
       },
     },
+  },
+  {
+    "echasnovski/mini.bufremove",
+    version = "*",
+    config = function()
+      require("mini.bufremove").setup({})
+    end,
   },
 }
