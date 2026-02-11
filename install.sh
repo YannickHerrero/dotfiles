@@ -46,12 +46,13 @@ declare -A MODULES=(
     ["mise"]="mise runtime manager"
     ["node"]="Node.js LTS, bun, pnpm, npm packages"
     ["tools"]="Additional tools (zoxide, delta, lazygit)"
+    ["tailscale"]="Tailscale VPN"
     ["git"]="Git configuration"
     ["dotfiles"]="Copy all dotfiles to home directory"
 )
 
 # Order for full install
-INSTALL_ORDER=(apt zsh tmux nvim mise node tools git dotfiles)
+INSTALL_ORDER=(apt zsh tmux nvim mise node tools tailscale git dotfiles)
 
 show_help() {
     echo "Dotfiles Bootstrap Script"
