@@ -1,6 +1,6 @@
 # Dotfiles
 
-Personal dotfiles for Ubuntu servers.
+Personal dotfiles for a Debian 13 VPS dev environment.
 
 ## Quick Start
 
@@ -18,7 +18,7 @@ Install specific components:
 ./install.sh apt        # System dependencies (build-essential, curl, etc.)
 ./install.sh zsh        # Zsh + oh-my-posh
 ./install.sh tmux       # Tmux
-./install.sh nvim       # Neovim (latest)
+./install.sh nvim       # Neovim
 ./install.sh mise       # mise runtime manager
 ./install.sh node       # Node.js LTS + bun + pnpm + npm packages
 ./install.sh tools      # zoxide, delta, lazygit
@@ -62,7 +62,7 @@ Themes update:
 
 | Tool | Installation | Description |
 |------|--------------|-------------|
-| neovim | PPA | Text editor (unstable/latest) |
+| neovim | apt | Text editor |
 
 #### Runtime Manager
 
@@ -153,7 +153,7 @@ dotfiles/
 
 ## Requirements
 
-- Ubuntu 22.04 or 24.04
+- Debian 13
 - sudo access
 - Internet connection
 
