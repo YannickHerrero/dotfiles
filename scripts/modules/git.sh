@@ -7,10 +7,16 @@ DOTFILES_DIR="$(dirname "$(dirname "$_MODULE_DIR")")"
 
 setup_git() {
     echo "Setting up git configuration..."
-    
+
     # Copy gitconfig
     cp "$DOTFILES_DIR/config/git/.gitconfig" "$HOME/.gitconfig"
-    
+
+    # Prompt for user identity
+    read -rp "Git user name: " git_name
+    read -rp "Git user email: " git_email
+    git config --global user.name "$git_name"
+    git config --global user.email "$git_email"
+
     # Create global gitignore if it doesn't exist
     if [[ ! -f "$HOME/.gitignore" ]]; then
         cat > "$HOME/.gitignore" << 'EOF'
@@ -31,7 +37,7 @@ Thumbs.db
 .env.*.local
 EOF
     fi
-    
+
     echo "Git configuration complete!"
     echo "  Name:  $(git config --global user.name)"
     echo "  Email: $(git config --global user.email)"
