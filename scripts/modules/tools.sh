@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # Install additional CLI tools
 
 install_tools() {

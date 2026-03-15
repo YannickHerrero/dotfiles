@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # Setup git configuration
 
 _MODULE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

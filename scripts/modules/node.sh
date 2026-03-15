@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # Install Node.js LTS, bun, pnpm, and global npm packages via mise
 
 install_node() {

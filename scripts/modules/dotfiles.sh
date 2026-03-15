@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # Copy all dotfiles to their appropriate locations
 
 _MODULE_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"

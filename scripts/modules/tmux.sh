@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # Install tmux and TPM (Tmux Plugin Manager)
 
 install_tmux() {

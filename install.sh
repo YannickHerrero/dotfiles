@@ -5,7 +5,7 @@
 #        ./install.sh nvim
 #        ./install.sh zsh tmux
 
-set -e
+set -euo pipefail
 
 SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 MODULES_DIR="$SCRIPT_DIR/scripts/modules"
