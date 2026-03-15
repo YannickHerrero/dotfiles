@@ -94,12 +94,10 @@ Themes update:
 | fd | apt | Fast find |
 
 ### Neovim Plugins
-- LSP support (lua, typescript, tailwindcss)
 - Telescope (fuzzy finder)
 - Neo-tree (file explorer)
 - Treesitter (syntax highlighting)
-- Gitsigns + Fugitive (git integration)
-- Supermaven (AI completion)
+- Lualine (statusline)
 - Which-key (keybinding hints)
 - And more...
 
