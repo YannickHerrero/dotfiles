@@ -22,6 +22,7 @@ Install specific components:
 ./install.sh mise       # mise runtime manager
 ./install.sh node       # Node.js LTS + bun + pnpm + npm packages
 ./install.sh tools      # zoxide, delta, lazygit
+./install.sh ssh        # SSH key generation
 ./install.sh git        # Git configuration
 ./install.sh dotfiles   # Copy all config files
 ```
@@ -85,9 +86,10 @@ Tmux and oh-my-posh intentionally inherit colors from the SSH client terminal.
 - Telescope (fuzzy finder)
 - Neo-tree (file explorer)
 - Treesitter (syntax highlighting)
+- LSP via mason (ts_ls, rust_analyzer)
+- nvim-cmp (completion)
 - Lualine (statusline)
 - Which-key (keybinding hints)
-- And more...
 
 ### Key Bindings
 
@@ -108,6 +110,11 @@ Tmux and oh-my-posh intentionally inherit colors from the SSH client terminal.
 | `Space + e` | Toggle file tree |
 | `Space + bd` | Close buffer |
 | `Shift + h/l` | Previous/next buffer |
+| `gd` | Go to definition (LSP) |
+| `gr` | Find references (LSP) |
+| `K` | Hover docs (LSP) |
+| `Space + ca` | Code action (LSP) |
+| `Space + rn` | Rename symbol (LSP) |
 
 #### Zsh
 | Key | Action |
