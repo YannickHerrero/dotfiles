@@ -2,7 +2,10 @@ vim.g.mapleader = " "
 
 local opt = vim.opt
 
-opt.clipboard = "unnamedplus" -- Sync with system clipboard
+if not vim.env.SSH_CONNECTION and vim.fn.has("clipboard") == 1 then
+  opt.clipboard = "unnamedplus"
+end
+
 opt.completeopt = "menu,menuone,noselect"
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
@@ -25,3 +28,7 @@ opt.undolevels = 10000
 opt.wrap = true
 opt.scrolloff = 999 -- Lines of context
 opt.sidescrolloff = 8 -- Columns of context
+
+vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "close buffer" })
+vim.keymap.set("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "prev buffer" })
+vim.keymap.set("n", "<S-l>", "<cmd>bnext<CR>", { desc = "next buffer" })
