@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # Install neovim from Debian repositories
 
 install_nvim() {

@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # Install system dependencies via apt
 
 install_apt() {

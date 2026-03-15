@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # Install mise - polyglot runtime manager
 
 install_mise() {

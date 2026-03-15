@@ -1,4 +1,5 @@
 #!/bin/bash
+set -euo pipefail
 # Install zsh and oh-my-posh
 
 install_zsh() {
