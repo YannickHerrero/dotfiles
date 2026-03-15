@@ -19,8 +19,7 @@ install_apt() {
         bat \
         eza \
         python3 \
-        python3-pip \
-        software-properties-common
+        python3-pip
     
     echo "System dependencies installed!"
 }
