@@ -69,7 +69,7 @@ show_help() {
     echo "  ./install.sh nvim         # Install only neovim"
     echo "  ./install.sh zsh tmux     # Install zsh and tmux"
     echo ""
-    echo "After installation, run 'set-theme mocha' to apply the theme"
+    echo "After installation, open a new shell to load the prompt and tools"
 }
 
 run_module() {
@@ -105,20 +105,12 @@ install_all() {
         run_module "$module"
     done
     
-    # Apply default theme
-    print_header "Applying default theme (mocha)"
-    "$SCRIPT_DIR/scripts/set-theme.sh" mocha
-    
     print_header "Installation Complete!"
     echo ""
     echo "Next steps:"
     echo "  1. Log out and log back in (for shell change)"
     echo "  2. Open a new terminal"
     echo "  3. Run 'nvim' to install plugins"
-    echo ""
-    echo "Theme commands:"
-    echo "  set-theme mocha    # Dark theme"
-    echo "  set-theme latte    # Light theme"
     echo ""
 }
 

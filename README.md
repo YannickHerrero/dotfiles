@@ -32,19 +32,7 @@ Or combine:
 ./install.sh apt zsh nvim
 ```
 
-## Theme Switching
-
-Switch between Catppuccin themes:
-
-```bash
-set-theme mocha   # Dark theme (default)
-set-theme latte   # Light theme
-```
-
-Themes update:
-- Neovim (base16 colors)
-- Oh My Posh (prompt colors)
-- Tmux (status bar colors)
+Tmux and oh-my-posh intentionally inherit colors from the SSH client terminal.
 
 ## What's Included
 
@@ -55,7 +43,7 @@ Themes update:
 | Tool | Installation | Description |
 |------|--------------|-------------|
 | zsh | apt | Shell with zinit plugin manager |
-| oh-my-posh | curl | Prompt theming |
+| oh-my-posh | curl | Prompt that inherits terminal colors |
 | tmux | apt | Terminal multiplexer with TPM |
 
 #### Editor
@@ -120,8 +108,6 @@ Themes update:
 | `Space + e` | Toggle file tree |
 | `Space + bd` | Close buffer |
 | `Shift + h/l` | Previous/next buffer |
-| `gd` | Go to definition |
-| `K` | Hover documentation |
 
 #### Zsh
 | Key | Action |
@@ -142,11 +128,7 @@ dotfiles/
 │   ├── tmux/tmux.conf
 │   └── zsh/                # Zsh configs
 ├── scripts/
-│   ├── modules/            # Install modules
-│   └── set-theme.sh        # Theme switcher
-└── themes/
-    ├── palettes/           # Theme definitions
-    └── scripts/            # Theme generators
+│   └── modules/            # Install modules
 ```
 
 ## Requirements
