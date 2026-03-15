@@ -2,16 +2,13 @@
   st = status
   ck = checkout
   lo = log
-[user]
-  name = YannickHerrero
-  email = yannick.herrero@proton.me
 [core]
   editor = nvim
   pager = delta
   autocrlf = input
   excludesfile = ~/.gitignore
-[credential]
-  helper = store
+[url "git@github.com:"]
+  insteadOf = https://github.com/
 [interactive]
   diffFilter = delta --color-only
 [delta]

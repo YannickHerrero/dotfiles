@@ -36,10 +36,6 @@ copy_dotfiles() {
     echo "  - Oh My Posh config"
     cp "$DOTFILES_DIR/config/ohmyposh/zen.toml" "$HOME/.config/ohmyposh/"
     
-    # Copy git config
-    echo "  - Git config"
-    cp "$DOTFILES_DIR/config/git/.gitconfig" "$HOME/.gitconfig"
-    
     echo "Dotfiles copied!"
 }
 
