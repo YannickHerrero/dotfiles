@@ -76,6 +76,7 @@ The `git` module reuses an existing global Git identity when `user.name` and `us
 
 | Tool | Installation | Description |
 |------|--------------|-------------|
+| claude code | curl | AI coding assistant |
 | opencode | curl | AI coding assistant |
 | zoxide | mise | Smart cd |
 | delta | mise | Git diff viewer |
