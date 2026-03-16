@@ -22,7 +22,7 @@ Install specific components:
 ./install.sh mise       # mise runtime manager
 ./install.sh node       # Node.js LTS + bun + pnpm + npm packages
 ./install.sh tools      # zoxide, delta, lazygit
-./install.sh ssh        # SSH key generation
+./install.sh ssh        # Optional GitHub SSH key generation
 ./install.sh git        # Git configuration
 ./install.sh dotfiles   # Copy all config files
 ```
@@ -34,6 +34,8 @@ Or combine:
 ```
 
 Tmux and oh-my-posh intentionally inherit colors from the SSH client terminal.
+
+GitHub SSH setup is optional. Public bootstrap downloads use HTTPS by default so a fresh shell works before adding a GitHub SSH key.
 
 ## What's Included
 
