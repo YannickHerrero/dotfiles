@@ -22,6 +22,7 @@ Install specific components:
 ./install.sh mise       # mise runtime manager
 ./install.sh node       # Node.js LTS + bun + pnpm + npm packages
 ./install.sh tools      # zoxide, delta, lazygit
+./install.sh claude     # Claude Code global config + skills
 ./install.sh ssh        # Optional GitHub SSH key generation
 ./install.sh git        # Git configuration
 ./install.sh dotfiles   # Copy all config files
@@ -38,6 +39,8 @@ Tmux and oh-my-posh intentionally inherit colors from the SSH client terminal.
 GitHub SSH setup is optional. Public bootstrap downloads use HTTPS by default so a fresh shell works before adding a GitHub SSH key.
 
 The `git` module reuses an existing global Git identity when `user.name` and `user.email` are already set, and asks for confirmation before keeping them.
+
+The `claude` module installs user-scoped Claude Code configuration into `~/.claude/`. The default settings disable Claude attribution in commits and pull requests, allow common Git workflows without prompts, ask for approval on higher-risk commands, and block a few dangerous patterns outright.
 
 ## What's Included
 
@@ -135,6 +138,7 @@ dotfiles/
 ├── install.sh              # Main install script
 ├── config/
 │   ├── git/.gitconfig
+│   ├── claude/             # Claude Code global config and skills
 │   ├── nvim/               # Neovim config
 │   ├── ohmyposh/zen.toml   # Prompt theme
 │   ├── tmux/tmux.conf
