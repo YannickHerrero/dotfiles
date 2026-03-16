@@ -37,6 +37,8 @@ Tmux and oh-my-posh intentionally inherit colors from the SSH client terminal.
 
 GitHub SSH setup is optional. Public bootstrap downloads use HTTPS by default so a fresh shell works before adding a GitHub SSH key.
 
+The `git` module reuses an existing global Git identity when `user.name` and `user.email` are already set, and asks for confirmation before keeping them.
+
 ## What's Included
 
 ### Tools Installed
