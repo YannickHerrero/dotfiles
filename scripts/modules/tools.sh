@@ -14,6 +14,14 @@ install_tools() {
     # Ensure mise is in PATH
     export PATH="$HOME/.local/bin:$PATH"
     
+    # Install Claude Code
+    if ! command -v claude &> /dev/null; then
+        echo "Installing Claude Code..."
+        curl -fsSL https://claude.ai/install.sh | bash
+    else
+        echo "Claude Code already installed"
+    fi
+
     # Install opencode
     if ! command -v opencode &> /dev/null; then
         echo "Installing opencode..."
