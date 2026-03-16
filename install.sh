@@ -46,13 +46,14 @@ declare -A MODULES=(
     ["mise"]="mise runtime manager"
     ["node"]="Node.js LTS, bun, pnpm, npm packages"
     ["tools"]="Additional tools (Claude Code, opencode, zoxide, delta, lazygit)"
+    ["claude"]="Claude Code global configuration and skills"
     ["ssh"]="SSH key generation"
     ["git"]="Git configuration"
     ["dotfiles"]="Copy all dotfiles to home directory"
 )
 
 # Order for full install
-INSTALL_ORDER=(apt ssh zsh tmux nvim mise node tools git dotfiles)
+INSTALL_ORDER=(apt ssh zsh tmux nvim mise node tools claude git dotfiles)
 
 show_help() {
     echo "Dotfiles Bootstrap Script"
