@@ -1,11 +1,13 @@
 return {
   {
     "williamboman/mason.nvim",
+    tag = "v2.2.1",
     lazy = false,
     opts = {},
   },
   {
     "williamboman/mason-lspconfig.nvim",
+    tag = "v2.1.0",
     lazy = false,
     opts = {
       ensure_installed = { "ts_ls", "rust_analyzer" },
@@ -13,6 +15,7 @@ return {
   },
   {
     "neovim/nvim-lspconfig",
+    tag = "v2.7.0",
     lazy = false,
     dependencies = {
       "williamboman/mason.nvim",
