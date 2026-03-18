@@ -12,14 +12,16 @@ install_claude_config() {
     mkdir -p "$TARGET_DIR/skills"
 
     cp "$SOURCE_DIR/settings.json" "$TARGET_DIR/settings.json"
+    cp "$SOURCE_DIR/CLAUDE.md" "$TARGET_DIR/CLAUDE.md"
 
     if [[ -d "$SOURCE_DIR/skills" ]]; then
         cp -R "$SOURCE_DIR/skills/." "$TARGET_DIR/skills/"
     fi
 
     echo "Claude Code configuration installed!"
-    echo "  - Settings: $TARGET_DIR/settings.json"
-    echo "  - Skills:   $TARGET_DIR/skills"
+    echo "  - Settings:  $TARGET_DIR/settings.json"
+    echo "  - CLAUDE.md: $TARGET_DIR/CLAUDE.md"
+    echo "  - Skills:    $TARGET_DIR/skills"
 }
 
 install_claude_config
