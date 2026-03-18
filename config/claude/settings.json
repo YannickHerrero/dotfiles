@@ -16,6 +16,7 @@
       "Bash(git restore *)",
       "Bash(git add *)",
       "Bash(git commit *)",
+      "Bash(git commit:*)",
       "Bash(git push *)",
       "Bash(git pull *)",
       "Bash(git fetch *)",
@@ -70,6 +71,11 @@
       "Bash(npm view *)",
       "Bash(pnpm list *)",
       "Bash(pnpm view *)",
+
+      "Bash(cargo check:*)",
+      "Bash(cargo search:*)",
+      "Bash(cargo build:*)",
+      "Bash(cargo test:*)",
 
       "Bash(npx tsc *)"
     ],
