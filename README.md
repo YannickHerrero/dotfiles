@@ -58,7 +58,7 @@ The `claude` module installs user-scoped Claude Code configuration into `~/.clau
 
 | Tool | Installation | Description |
 |------|--------------|-------------|
-| neovim | apt | Text editor |
+| neovim | GitHub release | Text editor (0.11+) |
 
 #### Runtime Manager
 
