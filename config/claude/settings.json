@@ -114,5 +114,10 @@
   "includeGitInstructions": true,
   "respectGitignore": true,
   "showTurnDuration": true,
-  "spinnerTipsEnabled": false
+  "spinnerTipsEnabled": false,
+  "statusLine": {
+    "type": "command",
+    "command": "~/.claude/statusline.sh",
+    "padding": 2
+  }
 }
