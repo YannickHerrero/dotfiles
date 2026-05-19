@@ -33,7 +33,16 @@ install_node() {
     else
         echo "eas-cli already installed"
     fi
-    
+
+    # tree-sitter CLI is required by nvim-treesitter v1 (main branch)
+    # to build parsers from the grammars declared in lua/plugins/treesitter.lua.
+    if ! command -v tree-sitter &> /dev/null; then
+        echo "Installing tree-sitter-cli..."
+        mise exec -- npm install -g tree-sitter-cli
+    else
+        echo "tree-sitter-cli already installed"
+    fi
+
     echo "Node.js, bun, pnpm, and packages installed!"
 }
 
