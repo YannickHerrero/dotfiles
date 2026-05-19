@@ -74,6 +74,7 @@ The `claude` module installs user-scoped Claude Code configuration into `~/.clau
 | bun | mise | JavaScript runtime/bundler |
 | pnpm | mise | Fast package manager |
 | eas-cli | npm | Expo Application Services |
+| tree-sitter-cli | npm | Parser builder for nvim-treesitter v1 |
 
 #### CLI Tools
 
@@ -84,6 +85,9 @@ The `claude` module installs user-scoped Claude Code configuration into `~/.clau
 | zoxide | mise | Smart cd |
 | delta | mise | Git diff viewer |
 | lazygit | mise | Git TUI |
+| gh | mise | GitHub CLI |
+| gh-notify | gh ext | GitHub notifications inbox (used by snacks dashboard) |
+| colorscript | git/make | shell-color-scripts; decorative blocks in snacks dashboard |
 | fzf | apt | Fuzzy finder |
 | eza | apt | Modern ls |
 | bat | apt | Cat with syntax highlighting |
@@ -91,13 +95,22 @@ The `claude` module installs user-scoped Claude Code configuration into `~/.clau
 | fd | apt | Fast find |
 
 ### Neovim Plugins
-- Telescope (fuzzy finder)
-- Neo-tree (file explorer)
-- Treesitter (syntax highlighting)
-- LSP via mason (ts_ls, rust_analyzer)
-- nvim-cmp (completion)
-- Lualine (statusline)
-- Which-key (keybinding hints)
+
+| Plugin | Role |
+|--------|------|
+| lazy.nvim | Plugin manager |
+| blink.cmp | Completion (Rust-backed) |
+| snacks.nvim | picker, explorer, dashboard, bigfile, quickfile |
+| mini.nvim | pairs, surround, statusline, tabline, icons |
+| nvim-treesitter (v1 main) | Syntax highlighting + indent |
+| nvim-lspconfig + mason + mason-lspconfig | LSP wiring |
+| mason-tool-installer | Auto-installs stylua / prettier / shfmt |
+| conform.nvim | Format-on-save |
+| which-key.nvim | Keybinding hints |
+| nvim-tmux-navigation | C-h/j/k/l between nvim and tmux panes |
+
+**LSP servers** (auto-installed via mason): `ts_ls`, `rust_analyzer`, `lua_ls`, `bashls`.
+**Formatters** (auto-installed via mason-tool-installer): `stylua`, `prettier`, `shfmt`. `rustfmt` comes from the Rust toolchain.
 
 ### Key Bindings
 
@@ -113,11 +126,12 @@ The `claude` module installs user-scoped Claude Code configuration into `~/.clau
 #### Neovim (leader: Space)
 | Key | Action |
 |-----|--------|
-| `Space + Space` | Find files |
-| `Space + sg` | Live grep |
-| `Space + e` | Toggle file tree |
+| `Space + Space` | Find files (snacks.picker) |
+| `Space + sg` | Live grep (snacks.picker) |
+| `Space + e` | Toggle file explorer (snacks.explorer, right-side) |
 | `Space + bd` | Close buffer |
-| `Shift + h/l` | Previous/next buffer |
+| `Space + o` | Toggle statusline visibility |
+| `Shift + h/l` | Previous/next buffer (also switches tab in mini.tabline) |
 | `gd` | Go to definition (LSP) |
 | `gr` | Find references (LSP) |
 | `K` | Hover docs (LSP) |
