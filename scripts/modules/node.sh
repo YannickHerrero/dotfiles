@@ -22,9 +22,10 @@ install_node() {
     echo "Installing bun..."
     mise use --global bun@latest
     
-    # Install pnpm
+    # Install pnpm via the npm backend; mise's default aqua backend for
+    # pnpm currently looks for an asset name pnpm no longer publishes.
     echo "Installing pnpm..."
-    mise use --global pnpm@latest
+    mise use --global npm:pnpm@latest
     
     # Install global packages
     if ! command -v eas &> /dev/null; then
