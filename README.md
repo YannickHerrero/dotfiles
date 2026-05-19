@@ -10,6 +10,9 @@ cd ~/dotfiles
 ./install.sh all
 ```
 
+Requires `sudo` access (used by the `apt` and `nvim` modules) and an
+internet connection.
+
 ## Modular Installation
 
 Install specific components:
@@ -160,6 +163,26 @@ dotfiles/
 ├── scripts/
 │   └── modules/            # Install modules
 ```
+
+## Troubleshooting
+
+If an install step dies partway through (network blip, transient apt
+failure, etc.), it's safe to just re-run:
+
+```bash
+./install.sh all          # picks up where it left off
+./install.sh <module>     # or re-run a single module
+```
+
+Every module is idempotent — already-installed tools are detected via
+`command -v` and skipped, and `./install.sh dotfiles` sweeps stale
+configs before copying so removing a plugin upstream actually
+removes it from `~/.config/nvim`.
+
+`gh auth login` is interactive and must be run manually; the
+`gh-notify` extension install in `tools.sh` is skipped (with an
+explanatory message) until then. Re-run `./install.sh tools` after
+authenticating.
 
 ## Requirements
 
