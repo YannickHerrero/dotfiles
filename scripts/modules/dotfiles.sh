@@ -20,8 +20,11 @@ copy_dotfiles() {
     cp "$DOTFILES_DIR/config/nvim/init.lua" "$HOME/.config/nvim/"
     cp "$DOTFILES_DIR/config/nvim/stylua.toml" "$HOME/.config/nvim/"
     cp "$DOTFILES_DIR/config/nvim/lua/vim-options.lua" "$HOME/.config/nvim/lua/"
-    cp "$DOTFILES_DIR/config/nvim/lua/plugins.lua" "$HOME/.config/nvim/lua/"
+    # Mirror the repo's plugin directory: drop stale specs that were removed
+    # upstream before copying so lazy.nvim doesn't keep loading them.
+    rm -f "$HOME/.config/nvim/lua/plugins/"*.lua
     cp "$DOTFILES_DIR/config/nvim/lua/plugins/"*.lua "$HOME/.config/nvim/lua/plugins/"
+    rm -f "$HOME/.config/nvim/lua/plugins.lua"
     
     # Copy zsh config
     echo "  - Zsh config"
