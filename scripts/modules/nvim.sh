@@ -25,6 +25,14 @@ install_nvim() {
     echo "Downloading $url ..."
     curl -fsSL -o "$tmp/$tarball" "$url"
 
+    # Guard against truncated / empty downloads so the next `tar` doesn't
+    # produce a confusing error half a step later.
+    if [[ ! -s "$tmp/$tarball" ]]; then
+        echo "Error: downloaded tarball is empty ($tmp/$tarball)" >&2
+        rm -rf "$tmp"
+        exit 1
+    fi
+
     echo "Extracting to /opt/nvim-linux-x86_64 ..."
     sudo tar -xzf "$tmp/$tarball" -C /opt
     rm -rf "$tmp"
