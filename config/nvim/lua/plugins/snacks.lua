@@ -37,7 +37,20 @@ return {
     picker = {
       enabled = true,
       sources = {
-        explorer = { layout = { layout = { position = "right" } } },
+        explorer = {
+          layout = { layout = { position = "right" } },
+          win = {
+            list = {
+              keys = {
+                ["<C-h>"] = function(picker)
+                  if vim.api.nvim_win_is_valid(picker.main) then
+                    vim.api.nvim_set_current_win(picker.main)
+                  end
+                end,
+              },
+            },
+          },
+        },
       },
     },
     explorer = { enabled = true },
@@ -104,5 +117,22 @@ return {
     { "<leader> ", function() Snacks.picker.files() end, desc = "find file" },
     { "<leader>sg", function() Snacks.picker.grep() end, desc = "live grep" },
     { "<leader>e", function() Snacks.explorer() end, desc = "file explorer" },
+    {
+      "<C-l>",
+      function()
+        local explorers = Snacks.picker.get({ source = "explorer" })
+        if explorers and #explorers > 0 then
+          local list_win = explorers[1].list.win.win
+          if vim.api.nvim_win_is_valid(list_win)
+            and vim.api.nvim_get_current_win() ~= list_win
+          then
+            vim.api.nvim_set_current_win(list_win)
+            return
+          end
+        end
+        require("nvim-tmux-navigation").NvimTmuxNavigateRight()
+      end,
+      desc = "go right (or focus explorer)",
+    },
   },
 }
