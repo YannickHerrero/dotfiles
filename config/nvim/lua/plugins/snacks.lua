@@ -5,22 +5,31 @@ return {
   init = function()
     -- snacks.dashboard terminal sections leave Neovim's "[Process exited 0]"
     -- footer when the polling-based cleanup in snacks.util.job races the
-    -- terminal output. Strip it deterministically on TermClose.
+    -- terminal subsystem. After TermClose, watch the buffer for the next
+    -- line append (which is the footer) via nvim_buf_attach and strip it.
     vim.api.nvim_create_autocmd("TermClose", {
       group = vim.api.nvim_create_augroup("snacks-strip-process-exited", { clear = true }),
       callback = function(args)
         local buf = args.buf
-        vim.defer_fn(function()
-          if not vim.api.nvim_buf_is_valid(buf) then return end
-          local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, true)
-          for i = #lines, 1, -1 do
-            if lines[i]:match("%[Process exited 0%]") then
-              vim.bo[buf].modifiable = true
-              pcall(vim.api.nvim_buf_set_lines, buf, i - 1, i, true, {})
-              vim.bo[buf].modifiable = false
-            end
-          end
-        end, 100)
+        local stripped = false
+        vim.api.nvim_buf_attach(buf, false, {
+          on_lines = function()
+            if stripped then return true end -- detach
+            vim.schedule(function()
+              if stripped or not vim.api.nvim_buf_is_valid(buf) then return end
+              local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, true)
+              for i = #lines, 1, -1 do
+                if lines[i]:match("%[Process exited 0%]") then
+                  vim.bo[buf].modifiable = true
+                  pcall(vim.api.nvim_buf_set_lines, buf, i - 1, i, true, {})
+                  vim.bo[buf].modifiable = false
+                  stripped = true
+                  return
+                end
+              end
+            end)
+          end,
+        })
       end,
     })
   end,
