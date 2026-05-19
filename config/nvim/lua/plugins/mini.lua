@@ -8,10 +8,11 @@ return {
     require("mini.icons").setup()
     require("mini.statusline").setup({ use_icons = true })
 
-    -- mini.statusline ships its own hardcoded cterm colors. Link every
-    -- section to the standard StatusLine highlight so the statusline
-    -- inherits the terminal theme like the rest of the editor.
-    for _, name in ipairs({
+    -- Drop mini.statusline's hardcoded colors and Neovim's default
+    -- StatusLine reverse attribute. Statusline blends with the editor
+    -- (terminal default bg/fg), bold text marks the bar.
+    local hl = { ctermbg = "NONE", ctermfg = "NONE", cterm = { bold = true } }
+    local groups = {
       "MiniStatuslineModeNormal",
       "MiniStatuslineModeInsert",
       "MiniStatuslineModeVisual",
@@ -22,8 +23,18 @@ return {
       "MiniStatuslineFilename",
       "MiniStatuslineFileinfo",
       "MiniStatuslineInactive",
-    }) do
-      vim.api.nvim_set_hl(0, name, { link = "StatusLine" })
+      "StatusLine",
+      "StatusLineNC",
+    }
+    local function apply()
+      for _, name in ipairs(groups) do
+        vim.api.nvim_set_hl(0, name, hl)
+      end
     end
+    apply()
+    vim.api.nvim_create_autocmd("ColorScheme", {
+      group = vim.api.nvim_create_augroup("statusline-terminal-theme", { clear = true }),
+      callback = apply,
+    })
   end,
 }
