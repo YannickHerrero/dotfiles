@@ -10,6 +10,7 @@ opt.completeopt = "menu,menuone,noselect"
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
 opt.expandtab = true -- Use spaces instead of tabs
+opt.laststatus = 0 -- Statusline hidden by default; toggled with <leader>o
 opt.list = true -- Show some invisible characters (tabs...
 opt.mouse = "a" -- Enable mouse mode
 opt.number = true -- Print line number
@@ -31,3 +32,6 @@ opt.sidescrolloff = 8 -- Columns of context
 vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "close buffer" })
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "prev buffer" })
 vim.keymap.set("n", "<S-l>", "<cmd>bnext<CR>", { desc = "next buffer" })
+vim.keymap.set("n", "<leader>o", function()
+  vim.opt.laststatus = vim.o.laststatus == 0 and 3 or 0
+end, { desc = "toggle statusline" })
