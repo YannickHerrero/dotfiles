@@ -41,7 +41,11 @@ install_tools() {
     # Install lazygit
     echo "Installing lazygit..."
     mise use --global lazygit@latest
-    
+
+    # Install GitHub CLI (used by snacks.dashboard GitHub sections)
+    echo "Installing GitHub CLI..."
+    mise use --global gh@latest
+
     echo "Additional tools installed!"
 }
 
