@@ -34,7 +34,12 @@ return {
     })
   end,
   opts = {
-    picker = { enabled = true },
+    picker = {
+      enabled = true,
+      sources = {
+        explorer = { layout = { layout = { position = "right" } } },
+      },
+    },
     explorer = { enabled = true },
     bigfile = { enabled = true },
     quickfile = { enabled = true },
