@@ -46,12 +46,18 @@ install_tools() {
     echo "Installing GitHub CLI..."
     mise use --global gh@latest
 
-    # Install gh-notify extension (powers the snacks.dashboard Notifications section)
-    if ! mise exec -- gh extension list 2>/dev/null | grep -q "meiji163/gh-notify"; then
-        echo "Installing gh-notify extension..."
-        mise exec -- gh extension install meiji163/gh-notify
+    # Install gh-notify extension (powers the snacks.dashboard Notifications section).
+    # Requires gh to be authenticated — `gh extension list` errors otherwise.
+    if mise exec -- gh auth status &>/dev/null; then
+        if ! mise exec -- gh extension list | grep -q "meiji163/gh-notify"; then
+            echo "Installing gh-notify extension..."
+            mise exec -- gh extension install meiji163/gh-notify
+        else
+            echo "gh-notify extension already installed"
+        fi
     else
-        echo "gh-notify extension already installed"
+        echo "Skipping gh-notify extension: gh CLI is not authenticated yet."
+        echo "  Run 'gh auth login', then re-run './install.sh tools' to install it."
     fi
 
     # Install shell-color-scripts (provides `colorscript`, used by snacks.dashboard)
