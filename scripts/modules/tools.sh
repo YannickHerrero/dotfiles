@@ -46,6 +46,17 @@ install_tools() {
     echo "Installing GitHub CLI..."
     mise use --global gh@latest
 
+    # Install shell-color-scripts (provides `colorscript`, used by snacks.dashboard)
+    if ! command -v colorscript &> /dev/null; then
+        echo "Installing colorscript..."
+        tmpdir="$(mktemp -d)"
+        git clone --depth=1 https://gitlab.com/dwt1/shell-color-scripts.git "$tmpdir"
+        sudo make -C "$tmpdir" install
+        rm -rf "$tmpdir"
+    else
+        echo "colorscript already installed"
+    fi
+
     echo "Additional tools installed!"
 }
 
