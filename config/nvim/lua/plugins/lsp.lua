@@ -10,7 +10,7 @@ return {
     tag = "v2.1.0",
     lazy = false,
     opts = {
-      ensure_installed = { "ts_ls", "rust_analyzer" },
+      ensure_installed = { "ts_ls", "rust_analyzer", "lua_ls", "bashls" },
     },
   },
   {
