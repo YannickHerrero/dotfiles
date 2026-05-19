@@ -33,7 +33,7 @@ return {
           local cmds = {
             {
               title = "Notifications",
-              cmd = "gh notify -s -a -n5",
+              cmd = "gh notify -s -a -n5 | grep . || echo 'No new notifications'",
               action = function()
                 vim.ui.open("https://github.com/notifications")
               end,
@@ -45,7 +45,7 @@ return {
             {
               icon = " ",
               title = "Git Status",
-              cmd = "git --no-pager diff --stat -B -M -C",
+              cmd = "git --no-pager diff --stat -B -M -C | grep . || echo 'Working tree clean'",
               height = 10,
             },
           }
