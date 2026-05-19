@@ -2,6 +2,28 @@ return {
   "folke/snacks.nvim",
   priority = 1000,
   lazy = false,
+  init = function()
+    -- snacks.dashboard terminal sections leave Neovim's "[Process exited 0]"
+    -- footer when the polling-based cleanup in snacks.util.job races the
+    -- terminal output. Strip it deterministically on TermClose.
+    vim.api.nvim_create_autocmd("TermClose", {
+      group = vim.api.nvim_create_augroup("snacks-strip-process-exited", { clear = true }),
+      callback = function(args)
+        local buf = args.buf
+        vim.defer_fn(function()
+          if not vim.api.nvim_buf_is_valid(buf) then return end
+          local lines = vim.api.nvim_buf_get_lines(buf, 0, -1, true)
+          for i = #lines, 1, -1 do
+            if lines[i]:match("%[Process exited 0%]") then
+              vim.bo[buf].modifiable = true
+              pcall(vim.api.nvim_buf_set_lines, buf, i - 1, i, true, {})
+              vim.bo[buf].modifiable = false
+            end
+          end
+        end, 100)
+      end,
+    })
+  end,
   opts = {
     picker = { enabled = true },
     explorer = { enabled = true },
