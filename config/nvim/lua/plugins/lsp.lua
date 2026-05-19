@@ -14,6 +14,15 @@ return {
     },
   },
   {
+    "WhoIsSethDaniel/mason-tool-installer.nvim",
+    dependencies = { "williamboman/mason.nvim" },
+    lazy = false,
+    opts = {
+      ensure_installed = { "stylua", "prettier", "shfmt" },
+      run_on_start = true,
+    },
+  },
+  {
     "neovim/nvim-lspconfig",
     tag = "v2.7.0",
     lazy = false,
