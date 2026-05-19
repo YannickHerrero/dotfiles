@@ -46,6 +46,14 @@ install_tools() {
     echo "Installing GitHub CLI..."
     mise use --global gh@latest
 
+    # Install gh-notify extension (powers the snacks.dashboard Notifications section)
+    if ! mise exec -- gh extension list 2>/dev/null | grep -q "meiji163/gh-notify"; then
+        echo "Installing gh-notify extension..."
+        mise exec -- gh extension install meiji163/gh-notify
+    else
+        echo "gh-notify extension already installed"
+    fi
+
     # Install shell-color-scripts (provides `colorscript`, used by snacks.dashboard)
     if ! command -v colorscript &> /dev/null; then
         echo "Installing colorscript..."
