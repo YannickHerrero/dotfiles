@@ -11,7 +11,6 @@ return {
         "typescript",
         "tsx",
         "json",
-        "jsonc",
         "yaml",
         "markdown",
         "markdown_inline",
@@ -32,6 +31,9 @@ return {
         "vim",
         "vimdoc",
       })
+
+      -- v1 dropped the standalone jsonc parser; reuse json for .jsonc files.
+      vim.treesitter.language.register("json", "jsonc")
 
       vim.api.nvim_create_autocmd("FileType", {
         callback = function(args)
