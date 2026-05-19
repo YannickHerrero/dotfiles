@@ -7,6 +7,7 @@ return {
     require("mini.surround").setup()
     require("mini.icons").setup()
     require("mini.statusline").setup({ use_icons = true })
+    require("mini.tabline").setup()
 
     -- Drop mini.statusline's hardcoded colors and Neovim's default
     -- StatusLine reverse attribute. Statusline blends with the editor
