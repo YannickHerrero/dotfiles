@@ -13,6 +13,12 @@ return {
       local builtin = require("telescope.builtin")
 
       telescope.setup({
+        defaults = {
+          -- nvim-treesitter v1 (main) drops the `configs` module that
+          -- telescope's previewer pokes at; fall back to vim's regex
+          -- syntax for previews.
+          preview = { treesitter = false },
+        },
         pickers = {
           find_files = {
             find_command = {
