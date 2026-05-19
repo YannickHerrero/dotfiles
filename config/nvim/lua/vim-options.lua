@@ -10,6 +10,7 @@ opt.completeopt = "menu,menuone,noselect"
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.cursorline = true -- Enable highlighting of the current line
 opt.expandtab = true -- Use spaces instead of tabs
+opt.fillchars = { eob = " " } -- Hide ~ on lines past end of buffer
 opt.laststatus = 0 -- Statusline hidden by default; toggled with <leader>o
 opt.list = true -- Show some invisible characters (tabs...
 opt.mouse = "a" -- Enable mouse mode
@@ -28,6 +29,18 @@ opt.undolevels = 10000
 opt.wrap = true
 opt.scrolloff = 999 -- Lines of context
 opt.sidescrolloff = 8 -- Columns of context
+
+-- Replace LSP diagnostic sign letters (E/W/H/I) with a thin vertical bar
+vim.diagnostic.config({
+  signs = {
+    text = {
+      [vim.diagnostic.severity.ERROR] = "▎",
+      [vim.diagnostic.severity.WARN] = "▎",
+      [vim.diagnostic.severity.HINT] = "▎",
+      [vim.diagnostic.severity.INFO] = "▎",
+    },
+  },
+})
 
 vim.keymap.set("n", "<leader>bd", "<cmd>bdelete<CR>", { desc = "close buffer" })
 vim.keymap.set("n", "<S-h>", "<cmd>bprevious<CR>", { desc = "prev buffer" })
