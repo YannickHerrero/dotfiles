@@ -20,7 +20,7 @@ if command -v zinit > /dev/null 2>&1; then
     zinit cdreplay -q
 fi
 
-# Source configs
-for config in ~/.zsh/*.zsh; do
+# Source configs (ZDOTDIR is set by ~/.zshenv to $XDG_CONFIG_HOME/zsh)
+for config in "${ZDOTDIR:-$HOME/.config/zsh}"/*.zsh; do
     source "$config"
 done

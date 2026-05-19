@@ -12,7 +12,7 @@ copy_dotfiles() {
     mkdir -p "$HOME/.config/nvim/lua/plugins"
     mkdir -p "$HOME/.config/ohmyposh"
     mkdir -p "$HOME/.config/tmux"
-    mkdir -p "$HOME/.zsh"
+    mkdir -p "$HOME/.config/zsh"
     mkdir -p "$HOME/dev"
     
     # Copy nvim config
@@ -26,10 +26,14 @@ copy_dotfiles() {
     cp "$DOTFILES_DIR/config/nvim/lua/plugins/"*.lua "$HOME/.config/nvim/lua/plugins/"
     rm -f "$HOME/.config/nvim/lua/plugins.lua"
     
-    # Copy zsh config
+    # Copy zsh config under XDG_CONFIG_HOME/zsh; ~/.zshenv points zsh there.
     echo "  - Zsh config"
-    cp "$DOTFILES_DIR/config/zsh/.zshrc" "$HOME/.zshrc"
-    cp "$DOTFILES_DIR/config/zsh/"*.zsh "$HOME/.zsh/"
+    cp "$DOTFILES_DIR/config/zsh/.zshenv" "$HOME/.zshenv"
+    cp "$DOTFILES_DIR/config/zsh/.zshrc" "$HOME/.config/zsh/.zshrc"
+    cp "$DOTFILES_DIR/config/zsh/"*.zsh "$HOME/.config/zsh/"
+    # Clean up any leftovers from the pre-XDG layout.
+    rm -f "$HOME/.zshrc"
+    rm -rf "$HOME/.zsh"
     
     # Copy tmux config
     echo "  - Tmux config"
