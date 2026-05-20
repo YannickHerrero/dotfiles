@@ -11,6 +11,23 @@ install_nvim() {
         sudo apt remove -y neovim
     fi
 
+    # Skip the ~30 MB tarball download when the installed nvim is already
+    # at the latest release. /releases/latest redirects to
+    # /releases/tag/vX.Y.Z, so the final path component IS the tag.
+    local latest_version
+    latest_version=$(curl -fsSL -o /dev/null -w '%{url_effective}' \
+        https://github.com/neovim/neovim/releases/latest | sed 's|.*/||')
+
+    if command -v nvim &> /dev/null; then
+        local current_version
+        current_version=$(nvim --version | head -1 | awk '{print $2}')
+        if [[ "$current_version" == "$latest_version" ]]; then
+            echo "Neovim $current_version is already at the latest release ($latest_version); skipping."
+            return 0
+        fi
+        echo "Upgrading Neovim $current_version → $latest_version..."
+    fi
+
     # Remove previous GitHub release install
     if [[ -d /opt/nvim-linux-x86_64 ]]; then
         echo "Removing previous install from /opt/nvim-linux-x86_64..."
