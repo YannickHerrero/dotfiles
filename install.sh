@@ -45,6 +45,7 @@ declare -A MODULES=(
     ["nvim"]="Neovim (latest stable from GitHub)"
     ["mise"]="mise runtime manager"
     ["node"]="Node.js LTS, bun, pnpm, npm packages"
+    ["rust"]="Rust toolchain via rustup"
     ["tools"]="Additional tools (Claude Code, opencode, zoxide, delta, lazygit)"
     ["claude"]="Claude Code global configuration and skills"
     ["ssh"]="SSH key generation"
@@ -53,7 +54,7 @@ declare -A MODULES=(
 )
 
 # Order for full install
-INSTALL_ORDER=(apt ssh zsh tmux nvim mise node tools claude git dotfiles)
+INSTALL_ORDER=(apt ssh zsh tmux nvim mise node rust tools claude git dotfiles)
 
 show_help() {
     echo "Dotfiles Bootstrap Script"
