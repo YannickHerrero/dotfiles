@@ -24,7 +24,8 @@ Install specific components:
 ./install.sh nvim       # Neovim
 ./install.sh mise       # mise runtime manager
 ./install.sh node       # Node.js LTS + bun + pnpm + npm packages
-./install.sh tools      # zoxide, delta, lazygit
+./install.sh rust       # Rust toolchain (rustup)
+./install.sh tools      # zoxide, delta, lazygit, gh, macchina, ...
 ./install.sh claude     # Claude Code global config + skills
 ./install.sh ssh        # Optional GitHub SSH key generation
 ./install.sh git        # Git configuration
@@ -63,11 +64,12 @@ The `claude` module installs user-scoped Claude Code configuration into `~/.clau
 |------|--------------|-------------|
 | neovim | GitHub release | Text editor (0.11+) |
 
-#### Runtime Manager
+#### Runtime Managers / Toolchains
 
 | Tool | Installation | Description |
 |------|--------------|-------------|
 | mise | curl | Polyglot runtime manager |
+| rustup | curl | Rust toolchain installer (provides cargo, rustc, rustfmt, clippy) |
 
 #### JavaScript
 
@@ -91,6 +93,7 @@ The `claude` module installs user-scoped Claude Code configuration into `~/.clau
 | gh | mise | GitHub CLI |
 | gh-notify | gh ext | GitHub notifications inbox (used by snacks dashboard) |
 | colorscript | git/make | shell-color-scripts; decorative blocks in snacks dashboard |
+| macchina | cargo | Rust-based system info fetch (aliased to `fetch`) |
 | fzf | apt | Fuzzy finder |
 | eza | apt | Modern ls |
 | bat | apt | Cat with syntax highlighting |
