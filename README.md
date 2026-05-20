@@ -86,7 +86,6 @@ The `claude` module installs user-scoped Claude Code configuration into `~/.clau
 | Tool | Installation | Description |
 |------|--------------|-------------|
 | claude code | curl | AI coding assistant |
-| opencode | curl | AI coding assistant |
 | zoxide | mise | Smart cd |
 | delta | mise | Git diff viewer |
 | lazygit | mise | Git TUI |

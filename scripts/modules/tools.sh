@@ -22,14 +22,6 @@ install_tools() {
         echo "Claude Code already installed"
     fi
 
-    # Install opencode
-    if ! command -v opencode &> /dev/null; then
-        echo "Installing opencode..."
-        curl -fsSL https://opencode.ai/install | bash
-    else
-        echo "opencode already installed"
-    fi
-    
     # Install zoxide
     echo "Installing zoxide..."
     mise use --global zoxide@latest

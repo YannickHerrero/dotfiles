@@ -1,6 +1,5 @@
 export PATH="$HOME/.local/bin:/snap/bin:$PATH"
 export PATH="$HOME/.cargo/bin:$PATH"
-export PATH="$HOME/.opencode/bin:$PATH"
 
 # Zinit
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"

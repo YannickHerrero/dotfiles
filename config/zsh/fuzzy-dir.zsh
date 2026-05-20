@@ -23,7 +23,7 @@ f() {
     else
         # Create new session with 4 windows
         tmux new-session -d -s "$session_name" -c "$project_path" -n "nvim"
-        tmux new-window -t "$session_name" -c "$project_path" -n "opencode"
+        tmux new-window -t "$session_name" -c "$project_path" -n "claude"
         tmux new-window -t "$session_name" -c "$project_path" -n "run"
         tmux new-window -t "$session_name" -c "$project_path" -n "zsh"
         
