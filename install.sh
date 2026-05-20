@@ -37,6 +37,25 @@ print_error() {
     echo -e "${RED}[ERROR]${NC} $1"
 }
 
+# Action items modules can defer until the end of the install run,
+# so they don't get lost in the middle of a long output stream.
+POST_INSTALL_NOTICES=()
+
+add_notice() {
+    POST_INSTALL_NOTICES+=("$1")
+}
+
+print_notices() {
+    if [[ ${#POST_INSTALL_NOTICES[@]} -eq 0 ]]; then
+        return
+    fi
+    echo ""
+    echo -e "${YELLOW}Action items:${NC}"
+    for notice in "${POST_INSTALL_NOTICES[@]}"; do
+        echo -e "  ${YELLOW}-${NC} $notice"
+    done
+}
+
 # Available modules
 declare -A MODULES=(
     ["apt"]="System dependencies (build-essential, curl, etc.)"
@@ -113,6 +132,7 @@ install_all() {
     echo "  1. Log out and log back in (for shell change)"
     echo "  2. Open a new terminal"
     echo "  3. Run 'nvim' to install plugins"
+    print_notices
     echo ""
 }
 
@@ -142,8 +162,9 @@ main() {
         fi
         run_module "$module"
     done
-    
+
     print_success "Done!"
+    print_notices
 }
 
 main "$@"

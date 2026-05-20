@@ -62,8 +62,8 @@ install_tools() {
             echo "gh-notify extension already installed"
         fi
     else
-        echo "Skipping gh-notify extension: gh CLI is not authenticated yet."
-        echo "  Run 'gh auth login', then re-run './install.sh tools' to install it."
+        echo "Skipping gh-notify extension: gh CLI not authenticated yet."
+        add_notice "Run 'gh auth login' then './install.sh tools' to install the gh-notify extension (powers the snacks.dashboard Notifications section)."
     fi
 
     # Install shell-color-scripts (provides `colorscript`, used by snacks.dashboard)
