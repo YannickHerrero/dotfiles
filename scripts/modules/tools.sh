@@ -42,6 +42,10 @@ install_tools() {
     echo "Installing lazygit..."
     mise use --global lazygit@latest
 
+    # Install macchina (Rust-based system info fetch, aliased to `fetch`)
+    echo "Installing macchina..."
+    mise use --global macchina@latest
+
     # Install GitHub CLI (used by snacks.dashboard GitHub sections)
     echo "Installing GitHub CLI..."
     mise use --global gh@latest
