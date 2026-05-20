@@ -42,9 +42,19 @@ install_tools() {
     echo "Installing lazygit..."
     mise use --global lazygit@latest
 
-    # Install macchina (Rust-based system info fetch, aliased to `fetch`)
-    echo "Installing macchina..."
-    mise use --global macchina@latest
+    # Install macchina (Rust-based system info fetch, aliased to `fetch`).
+    # mise's registry doesn't include macchina; build from source via cargo.
+    if ! command -v macchina &>/dev/null; then
+        if command -v cargo &>/dev/null; then
+            echo "Installing macchina (compiles from source, ~1 minute)..."
+            cargo install --locked macchina
+        else
+            echo "Skipping macchina: cargo not found."
+            echo "  Install Rust (https://rustup.rs), then re-run './install.sh tools'."
+        fi
+    else
+        echo "macchina already installed"
+    fi
 
     # Install GitHub CLI (used by snacks.dashboard GitHub sections)
     echo "Installing GitHub CLI..."
