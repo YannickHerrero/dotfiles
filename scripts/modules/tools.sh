@@ -49,8 +49,12 @@ install_tools() {
     fi
 
     # Install GitHub CLI (used by snacks.dashboard GitHub sections)
-    echo "Installing GitHub CLI..."
-    mise use --global gh@latest
+    if ! command -v gh &>/dev/null; then
+        echo "Installing GitHub CLI..."
+        mise use --global gh@latest
+    else
+        echo "gh already installed"
+    fi
 
     # Install gh-notify extension (powers the snacks.dashboard Notifications section).
     # Requires gh to be authenticated — `gh extension list` errors otherwise.
