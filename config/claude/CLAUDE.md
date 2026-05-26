@@ -7,5 +7,6 @@ Never chain commands with `&&`, `||`, or `;` in a single Bash tool call. Use sep
 ## Git Workflow
 
 - After completing a logical unit of work, commit with atomic, scoped commits (not one giant commit)
+- Split into small, independant and atomic commits. the more commits the better
 - Always push to origin after committing unless told otherwise
 - Preserve correct git authorship; verify `git config user.email` matches the repo's expected author before committing
