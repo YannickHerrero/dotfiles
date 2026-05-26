@@ -30,6 +30,20 @@ opt.wrap = true
 opt.scrolloff = 999 -- Lines of context
 opt.sidescrolloff = 8 -- Columns of context
 
+-- Inherit the terminal emulator's background instead of the default
+-- colorscheme's `Normal ctermbg=Black`. Re-applied on every ColorScheme
+-- event so it survives plugin-driven scheme changes.
+local function clear_normal_bg()
+  vim.api.nvim_set_hl(0, "Normal", { ctermbg = "NONE", ctermfg = "NONE" })
+  vim.api.nvim_set_hl(0, "NormalNC", { ctermbg = "NONE", ctermfg = "NONE" })
+  vim.api.nvim_set_hl(0, "EndOfBuffer", { ctermbg = "NONE", ctermfg = "NONE" })
+end
+clear_normal_bg()
+vim.api.nvim_create_autocmd("ColorScheme", {
+  group = vim.api.nvim_create_augroup("inherit-terminal-bg", { clear = true }),
+  callback = clear_normal_bg,
+})
+
 -- Replace LSP diagnostic sign letters (E/W/H/I) with a thin vertical bar
 vim.diagnostic.config({
   signs = {

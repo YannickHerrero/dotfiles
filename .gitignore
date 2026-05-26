@@ -1,6 +1,9 @@
 # Generated theme files (created by set-theme)
 config/nvim/lua/theme-colors.lua
 
+# Claude Code local working directory
+.claude/
+
 # OS files
 .DS_Store
 Thumbs.db
