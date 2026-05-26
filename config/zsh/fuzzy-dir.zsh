@@ -22,16 +22,16 @@ f() {
         fi
     else
         # Create new session with 4 windows
-        tmux new-session -d -s "$session_name" -c "$project_path" -n "nvim"
-        tmux new-window -t "$session_name" -c "$project_path" -n "claude"
+        tmux new-session -d -s "$session_name" -c "$project_path" -n "Claude"
+        tmux new-window -t "$session_name" -c "$project_path" -n "nvim"
         tmux new-window -t "$session_name" -c "$project_path" -n "run"
         tmux new-window -t "$session_name" -c "$project_path" -n "zsh"
-        
+
         # Split the 'run' window into 2 side-by-side panes
         tmux split-window -h -t "$session_name:run"
-        
+
         # Select the first window
-        tmux select-window -t "$session_name:nvim"
+        tmux select-window -t "$session_name:Claude"
         
         # Attach or switch to the new session
         if [ -n "$TMUX" ]; then
