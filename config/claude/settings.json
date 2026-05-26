@@ -95,13 +95,13 @@
       "Bash(bun install *)",
       "Bash(ssh *)",
       "Bash(scp *)",
-      "Bash(rsync *)"
-    ],
-    "deny": [
+      "Bash(rsync *)",
       "Bash(rm -rf *)",
       "Bash(rm -fr *)",
       "Bash(curl *)",
-      "Bash(wget *)",
+      "Bash(wget *)"
+    ],
+    "deny": [
       "Read(./.env)",
       "Read(./.env.*)",
       "Read(./secrets/**)",
