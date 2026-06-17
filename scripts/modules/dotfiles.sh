@@ -19,7 +19,7 @@ copy_dotfiles() {
     echo "  - Neovim config"
     cp "$DOTFILES_DIR/config/nvim/init.lua" "$HOME/.config/nvim/"
     cp "$DOTFILES_DIR/config/nvim/stylua.toml" "$HOME/.config/nvim/"
-    cp "$DOTFILES_DIR/config/nvim/lua/vim-options.lua" "$HOME/.config/nvim/lua/"
+    cp "$DOTFILES_DIR/config/nvim/lua/"*.lua "$HOME/.config/nvim/lua/"
     # Mirror the repo's plugin directory: drop stale specs that were removed
     # upstream before copying so lazy.nvim doesn't keep loading them.
     rm -f "$HOME/.config/nvim/lua/plugins/"*.lua
@@ -42,7 +42,22 @@ copy_dotfiles() {
     # Copy oh-my-posh config
     echo "  - Oh My Posh config"
     cp "$DOTFILES_DIR/config/ohmyposh/zen.toml" "$HOME/.config/ohmyposh/"
-    
+
+    # On WSL, sync the Tridactyl config to the Windows user profile so Firefox
+    # (running on Windows) picks up the nvim editor integration. Skipped on a
+    # native Linux box where there's no Windows side.
+    if grep -qiE '(microsoft|wsl)' /proc/version 2>/dev/null; then
+        echo "  - Tridactyl config (Windows side, via WSL)"
+        win_home="$(wslpath "$(cmd.exe /c 'echo %USERPROFILE%' 2>/dev/null | tr -d '\r')" 2>/dev/null || true)"
+        if [[ -n "$win_home" && -d "$win_home" ]]; then
+            mkdir -p "$win_home/.config/tridactyl"
+            cp "$DOTFILES_DIR/config/tridactyl/tridactylrc" "$win_home/.config/tridactyl/"
+            cp "$DOTFILES_DIR/config/tridactyl/wsl-integration.js" "$win_home/.config/tridactyl/"
+        else
+            echo "    (could not resolve Windows home; skipped)"
+        fi
+    fi
+
     echo "Dotfiles copied!"
 }
 
