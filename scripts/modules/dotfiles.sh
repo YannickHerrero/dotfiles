@@ -56,11 +56,6 @@ copy_dotfiles() {
         else
             echo "    (could not resolve Windows home; skipped)"
         fi
-        # edit.sh runs on the Linux side (launched inside the WezTerm window),
-        # so it lives in the WSL home, not the Windows profile.
-        mkdir -p "$HOME/.config/tridactyl"
-        cp "$DOTFILES_DIR/config/tridactyl/edit.sh" "$HOME/.config/tridactyl/edit.sh"
-        chmod +x "$HOME/.config/tridactyl/edit.sh"
     fi
 
     echo "Dotfiles copied!"
