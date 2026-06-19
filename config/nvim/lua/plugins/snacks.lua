@@ -40,6 +40,8 @@ return {
         explorer = {
           layout = { layout = { position = "right" } },
           jump = { close = true },
+          hidden = true, -- show dotfiles
+          ignored = true, -- show .gitignore'd files (toggle in-explorer with I)
         },
       },
     },
