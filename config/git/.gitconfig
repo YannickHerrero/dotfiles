@@ -2,6 +2,7 @@
   st = status
   ck = checkout
   lo = log
+  lg = log --all --decorate --oneline --graph
 [core]
   editor = nvim
   pager = delta
