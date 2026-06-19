@@ -113,12 +113,11 @@ The `claude` module installs user-scoped Claude Code configuration into `~/.clau
 | mason-tool-installer | Auto-installs stylua / prettier / shfmt |
 | conform.nvim | Format-on-save |
 | which-key.nvim | Keybinding hints |
-| nvim-tmux-navigation | C-h/j/k/l between nvim and tmux panes |
 
 **LSP servers** (auto-installed via mason): `ts_ls`, `rust_analyzer`, `lua_ls`, `bashls`.
 **Formatters** (auto-installed via mason-tool-installer): `stylua`, `prettier`, `shfmt`. `rustfmt` comes from the Rust toolchain.
 
-**Supermaven** needs a one-time activation: run `:SupermavenUseFree` in nvim (or `:SupermavenUsePro` with a Pro account) and follow the link. Inline suggestions: `<Tab>` or `<C-j>` accept, `<C-l>` accept word, `<C-]>` dismiss.
+**Supermaven** needs a one-time activation: run `:SupermavenUseFree` in nvim (or `:SupermavenUsePro` with a Pro account) and follow the link. Inline suggestions: `<Tab>` accept, `<S-Tab>` accept word, `<C-]>` dismiss.
 
 ### Key Bindings
 
