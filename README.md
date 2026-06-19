@@ -105,6 +105,7 @@ The `claude` module installs user-scoped Claude Code configuration into `~/.clau
 |--------|------|
 | lazy.nvim | Plugin manager |
 | blink.cmp | Completion (Rust-backed) |
+| supermaven-nvim | Inline AI completions (ghost text) |
 | snacks.nvim | picker, explorer, dashboard, bigfile, quickfile |
 | mini.nvim | pairs, surround, statusline, tabline, icons |
 | nvim-treesitter (v1 main) | Syntax highlighting + indent |
@@ -116,6 +117,8 @@ The `claude` module installs user-scoped Claude Code configuration into `~/.clau
 
 **LSP servers** (auto-installed via mason): `ts_ls`, `rust_analyzer`, `lua_ls`, `bashls`.
 **Formatters** (auto-installed via mason-tool-installer): `stylua`, `prettier`, `shfmt`. `rustfmt` comes from the Rust toolchain.
+
+**Supermaven** needs a one-time activation: run `:SupermavenUseFree` in nvim (or `:SupermavenUsePro` with a Pro account) and follow the link. Inline suggestions: `<Tab>` accept, `<C-j>` accept word, `<C-]>` dismiss.
 
 ### Key Bindings
 
