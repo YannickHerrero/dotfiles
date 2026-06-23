@@ -38,6 +38,8 @@ copy_dotfiles() {
     # Copy tmux config
     echo "  - Tmux config"
     cp "$DOTFILES_DIR/config/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
+    cp "$DOTFILES_DIR/config/tmux/sessionizer.sh" "$HOME/.config/tmux/sessionizer.sh"
+    chmod +x "$HOME/.config/tmux/sessionizer.sh"
     
     # Copy oh-my-posh config
     echo "  - Oh My Posh config"
