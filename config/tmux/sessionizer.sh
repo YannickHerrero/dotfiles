@@ -7,12 +7,15 @@ set -euo pipefail
 
 # Map each project session to when it was last attached so projects with an
 # open (or most recently focused) session float to the top; everything else
-# keeps its filesystem order below them.
+# keeps its filesystem order below them. The session we're currently in (if
+# any) is pushed to the very bottom -- we're already there.
 sessions=$(tmux list-sessions -F '#{session_name} #{session_last_attached}' 2>/dev/null || true)
+current=""
+[ -n "${TMUX:-}" ] && current=$(tmux display-message -p '#{session_name}' 2>/dev/null || true)
 
 dir=$(find "$HOME/dev" "$HOME/dev/peren" -mindepth 1 -maxdepth 1 -type d -printf '%p\n' 2>/dev/null | \
     sed "s|^$HOME/dev/||" | \
-    awk -v sess="$sessions" '
+    awk -v sess="$sessions" -v cur="$current" '
         BEGIN {
             n = split(sess, lines, "\n")
             for (i = 1; i <= n; i++) {
@@ -22,7 +25,9 @@ dir=$(find "$HOME/dev" "$HOME/dev/peren" -mindepth 1 -maxdepth 1 -type d -printf
         }
         {
             name = $0; sub(/.*\//, "", name)   # session name = basename
-            print ((name in ts) ? ts[name] : 0) "\t" $0
+            if (name == cur) key = -1          # current session -> bottom
+            else key = (name in ts) ? ts[name] : 0
+            print key "\t" $0
         }' | \
     sort -s -k1,1nr | cut -f2- | \
     fzf --preview "eza --tree --level=1 --color=always $HOME/dev/{}" \
