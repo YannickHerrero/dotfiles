@@ -5,8 +5,26 @@
 # client, otherwise it attaches.
 set -euo pipefail
 
+# Map each project session to when it was last attached so projects with an
+# open (or most recently focused) session float to the top; everything else
+# keeps its filesystem order below them.
+sessions=$(tmux list-sessions -F '#{session_name} #{session_last_attached}' 2>/dev/null || true)
+
 dir=$(find "$HOME/dev" "$HOME/dev/peren" -mindepth 1 -maxdepth 1 -type d -printf '%p\n' 2>/dev/null | \
     sed "s|^$HOME/dev/||" | \
+    awk -v sess="$sessions" '
+        BEGIN {
+            n = split(sess, lines, "\n")
+            for (i = 1; i <= n; i++) {
+                split(lines[i], a, " ")
+                if (a[1] != "") ts[a[1]] = a[2]
+            }
+        }
+        {
+            name = $0; sub(/.*\//, "", name)   # session name = basename
+            print ((name in ts) ? ts[name] : 0) "\t" $0
+        }' | \
+    sort -s -k1,1nr | cut -f2- | \
     fzf --preview "eza --tree --level=1 --color=always $HOME/dev/{}" \
         --bind 'ctrl-d:preview-half-page-down,ctrl-u:preview-half-page-up')
 
