@@ -126,6 +126,7 @@ The `claude` module installs user-scoped Claude Code configuration into `~/.clau
 |-----|--------|
 | `prefix + \|` | Split vertical |
 | `prefix + -` | Split horizontal |
+| `prefix + j` | Sessionizer popup (select project, create/attach session) |
 | `prefix + r` | Reload config |
 | `Ctrl + h/j/k/l` | Navigate panes |
 | `Alt + 1-5` | Switch windows |
