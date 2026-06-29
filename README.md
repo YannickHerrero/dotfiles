@@ -123,6 +123,11 @@ The `claude` module installs user-scoped Claude Code configuration into `~/.clau
 
 ### Key Bindings
 
+#### Herdr (prefix: Ctrl+A)
+| Key | Action |
+|-----|--------|
+| `prefix + j` | Space sessionizer in a temporary pane (select `~/dev` project, focus/create space) |
+
 #### Tmux (prefix: Ctrl+A)
 | Key | Action |
 |-----|--------|

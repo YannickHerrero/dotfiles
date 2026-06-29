@@ -10,6 +10,12 @@ focus_pane_up = "ctrl+k"
 focus_pane_right = "ctrl+l"
 toggle_sidebar = "ctrl+b"
 
+[[keys.command]]
+key = "prefix+j"
+type = "pane"
+command = "~/.config/herdr/sessionizer.sh"
+description = "Herdr space sessionizer"
+
 [theme]
 name = "terminal"
 auto_switch = false
