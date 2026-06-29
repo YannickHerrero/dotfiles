@@ -21,6 +21,7 @@ Install specific components:
 ./install.sh apt        # System dependencies (build-essential, curl, etc.)
 ./install.sh zsh        # Zsh + oh-my-posh
 ./install.sh tmux       # Tmux
+./install.sh herdr      # Herdr
 ./install.sh nvim       # Neovim
 ./install.sh mise       # mise runtime manager
 ./install.sh node       # Node.js LTS + bun + pnpm + npm packages
@@ -57,6 +58,7 @@ The `claude` module installs user-scoped Claude Code configuration into `~/.clau
 | zsh | apt | Shell with zinit plugin manager |
 | oh-my-posh | curl | Prompt that inherits terminal colors |
 | tmux | apt | Terminal multiplexer with TPM |
+| herdr | curl | Terminal workspace manager |
 
 #### Editor
 
@@ -149,7 +151,8 @@ The `claude` module installs user-scoped Claude Code configuration into `~/.clau
 #### Zsh
 | Key | Action |
 |-----|--------|
-| `f` | Tmux sessionizer (select project, create/attach session) |
+| `f` | Herdr space sessionizer (select `~/dev` project, focus/create space) |
+| `tf` | Tmux sessionizer (select project, create/attach session) |
 | `ff` | Fuzzy find files, open in nvim |
 | `z <dir>` | Smart cd with zoxide |
 
@@ -163,6 +166,7 @@ dotfiles/
 │   ├── claude/             # Claude Code global config and skills
 │   ├── nvim/               # Neovim config
 │   ├── ohmyposh/zen.toml   # Prompt theme
+│   ├── herdr/              # Herdr config and space sessionizer
 │   ├── tmux/tmux.conf
 │   └── zsh/                # Zsh configs
 ├── scripts/
