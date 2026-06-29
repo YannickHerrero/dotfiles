@@ -12,6 +12,7 @@ copy_dotfiles() {
     mkdir -p "$HOME/.config/nvim/lua/plugins"
     mkdir -p "$HOME/.config/ohmyposh"
     mkdir -p "$HOME/.config/tmux"
+    mkdir -p "$HOME/.config/herdr"
     mkdir -p "$HOME/.config/zsh"
     mkdir -p "$HOME/dev"
     
@@ -40,6 +41,10 @@ copy_dotfiles() {
     cp "$DOTFILES_DIR/config/tmux/tmux.conf" "$HOME/.config/tmux/tmux.conf"
     cp "$DOTFILES_DIR/config/tmux/sessionizer.sh" "$HOME/.config/tmux/sessionizer.sh"
     chmod +x "$HOME/.config/tmux/sessionizer.sh"
+
+    # Copy Herdr config
+    echo "  - Herdr config"
+    cp "$DOTFILES_DIR/config/herdr/config.toml" "$HOME/.config/herdr/config.toml"
     
     # Copy oh-my-posh config
     echo "  - Oh My Posh config"
