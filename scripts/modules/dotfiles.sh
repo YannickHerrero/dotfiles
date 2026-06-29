@@ -45,6 +45,8 @@ copy_dotfiles() {
     # Copy Herdr config
     echo "  - Herdr config"
     cp "$DOTFILES_DIR/config/herdr/config.toml" "$HOME/.config/herdr/config.toml"
+    cp "$DOTFILES_DIR/config/herdr/sessionizer.sh" "$HOME/.config/herdr/sessionizer.sh"
+    chmod +x "$HOME/.config/herdr/sessionizer.sh"
     
     # Copy oh-my-posh config
     echo "  - Oh My Posh config"

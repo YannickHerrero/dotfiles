@@ -1,6 +1,11 @@
+# Herdr space sessionizer - select a project and focus/create a Herdr space.
+f() {
+    "$HOME/.config/herdr/sessionizer.sh"
+}
+
 # Tmux sessionizer - select a project and attach/create tmux session.
 # Shares its logic with the `prefix + j` tmux keybind via sessionizer.sh.
-f() {
+tf() {
     "$HOME/.config/tmux/sessionizer.sh"
 }
 
